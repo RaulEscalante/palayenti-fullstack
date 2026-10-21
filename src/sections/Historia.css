@@ -1,0 +1,114 @@
+.story-section {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: center;
+  gap: 9%;
+  color: var(--color-background);
+  background: #F5F8FA;
+}
+
+.story-visual {
+  position: relative;
+  padding: 0 0 25px 25px;
+}
+
+.story-visual-inner {
+  position: relative;
+  min-height: 410px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  overflow: hidden;
+  color: var(--color-accent);
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(100, 197, 235, 0.2), transparent 48%),
+    linear-gradient(135deg, #203F55, #101820);
+}
+
+.story-visual-inner::before {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  content: '';
+  border: 1px solid rgba(100, 197, 235, 0.3);
+  border-radius: 50%;
+}
+
+.story-visual-inner>svg,
+.story-visual-inner>span,
+.story-visual-inner>small {
+  z-index: 1;
+}
+
+.story-visual-inner>span {
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+
+.story-visual-inner>small {
+  color: #A2B7C7;
+  font-size: 0.55rem;
+  letter-spacing: 1.5px;
+}
+
+.story-index {
+  position: absolute;
+  right: -10px;
+  bottom: 0;
+  padding: 15px 18px;
+  color: white;
+  background: var(--color-primary);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.story-content h2 {
+  margin: 20px 0;
+  font-family: 'NeulisAlt', sans-serif;
+  font-size: clamp(2.2rem, 3.6vw, 3.7rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -2px;
+}
+
+.story-content h2 span {
+  color: var(--color-primary);
+}
+
+.story-content>p {
+  max-width: 510px;
+  color: #63717D;
+  font-size: 0.82rem;
+  line-height: 1.95;
+}
+
+.story-content .button {
+  margin-top: 17px;
+  color: var(--color-background);
+  border-color: #B5C1CB;
+}
+
+.story-content .button:hover {
+  border-color: var(--color-primary);
+}
+
+@media (max-width: 760px) {
+  .story-section {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .story-visual-inner {
+    min-height: 340px;
+  }
+
+  .story-content h2 {
+    font-size: clamp(2.3rem, 9vw, 3.5rem);
+  }
+}

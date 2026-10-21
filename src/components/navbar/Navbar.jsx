@@ -21,31 +21,19 @@ export default function Navbar() {
         PALA<span>YENTI</span><i>.</i>
       </a>
 
-      <button
-        className="mobile-menu-toggle"
-        aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
-        aria-expanded={menuOpen}
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
+      <button className="mobile-menu-toggle" aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+        aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
         {menuOpen ? <X /> : <Menu />}
       </button>
 
       <nav className={`main-nav ${menuOpen ? 'is-open' : ''}`}>
         {navLinks.map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
-            onClick={() => setMenuOpen(false)}
-          >
+          <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>
             {link.label}
           </a>
         ))}
 
-        <a
-          className="nav-contact"
-          href="#contacto"
-          onClick={() => setMenuOpen(false)}
-        >
+        <a className="nav-contact" href="#contacto" onClick={() => setMenuOpen(false)}>
           Hablemos <ArrowUpRight size={15} />
         </a>
       </nav>

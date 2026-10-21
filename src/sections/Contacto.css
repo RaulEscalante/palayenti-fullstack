@@ -1,0 +1,146 @@
+.contact-section {
+  color: white;
+  background: #14212C;
+}
+
+.contact-section .section-heading h2 span {
+  color: var(--color-accent);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 10%;
+}
+
+.contact-label {
+  color: var(--color-accent);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.contact-details h3 {
+  margin: 20px 0;
+  font-family: 'NeulisAlt', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.contact-details>p {
+  max-width: 350px;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  line-height: 1.9;
+}
+
+.contact-socials {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.contact-socials a {
+  width: 45px;
+  height: 45px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--color-border);
+  color: var(--color-accent);
+  transition: background 0.2s ease;
+}
+
+.contact-socials a:hover {
+  background: var(--color-primary);
+}
+
+.socials-caption {
+  display: block;
+  margin-top: 13px;
+  color: #8595A2;
+  font-size: 0.55rem;
+  letter-spacing: 1.2px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+}
+
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #D9E1E7;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  width: 100%;
+  min-height: 47px;
+  padding: 13px 14px;
+  color: white;
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0;
+  background: #101820;
+  font-size: 0.78rem;
+  transition: border-color 0.2s ease;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+  border-color: var(--color-accent);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #71818F;
+}
+
+.contact-form select option {
+  color: white;
+  background: #101820;
+}
+
+.form-submit {
+  align-self: flex-start;
+  border: 0;
+}
+
+.form-note {
+  color: #7E909E;
+  font-size: 0.55rem;
+  letter-spacing: 0.7px;
+}
+
+@media (max-width: 1050px) {
+  .contact-grid {
+    gap: 6%;
+  }
+}
+
+@media (max-width: 760px) {
+  .contact-grid {
+    gap: 40px;
+  }
+
+  .contact-details h3 {
+    font-size: 2.2rem;
+  }
+
+  .form-submit {
+    width: 100%;
+  }
+}

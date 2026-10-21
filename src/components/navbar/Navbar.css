@@ -12,8 +12,15 @@
   border-bottom: 1px solid var(--color-border);
 }
 
+.mobile-menu-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
 .brand {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'NeulisAlt', sans-serif;
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -1.5px;

@@ -1,0 +1,184 @@
+.universes-section {
+  background: #F5F8FA;
+  color: var(--color-background);
+}
+
+.universe-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.universe-card {
+  position: relative;
+  min-height: 390px;
+  display: flex;
+  align-items: end;
+  padding: 35px;
+  overflow: hidden;
+  color: white;
+  background: #101820;
+  isolation: isolate;
+}
+
+.universe-card-bg {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, #17232E, #101820);
+}
+
+.music-card .universe-card-bg {
+  background:
+    radial-gradient(ellipse at 85% 20%, rgba(23, 105, 170, 0.7), transparent 50%),
+    linear-gradient(140deg, #132B40, #101820 75%);
+}
+
+.creator-card .universe-card-bg {
+  background:
+    radial-gradient(ellipse at 75% 25%, rgba(100, 197, 235, 0.3), transparent 40%),
+    linear-gradient(140deg, #193C53, #101820 75%);
+}
+
+.universe-card-bg::after {
+  position: absolute;
+  content: '';
+  inset: 0;
+  background: linear-gradient(to top, rgba(7, 13, 19, 0.98), transparent 90%);
+}
+
+.music-equalizer {
+  position: absolute;
+  top: 35px;
+  right: 35px;
+  left: 35px;
+  height: 155px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0.65;
+}
+
+.music-equalizer span {
+  width: 5px;
+  height: var(--bar-height);
+  max-height: 100%;
+  border-radius: 5px;
+  background: var(--color-accent);
+  opacity: 0.75;
+}
+
+.universe-watermark {
+  position: absolute;
+  top: 40px;
+  right: 38px;
+  width: 130px;
+  height: 130px;
+  color: rgba(100, 197, 235, 0.18);
+}
+
+.creator-shape {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  border: 1px solid rgba(100, 197, 235, 0.4);
+  border-radius: 50%;
+}
+
+.creator-shape-one {
+  top: -60px;
+  right: 50px;
+}
+
+.creator-shape-two {
+  top: -20px;
+  right: -15px;
+  width: 320px;
+  height: 320px;
+}
+
+.universe-card-content {
+  position: relative;
+  z-index: 2;
+  max-width: 420px;
+}
+
+.card-kicker {
+  color: var(--color-accent);
+  font-size: 0.61rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.universe-card h3 {
+  margin: 18px 0 12px;
+  font-family: 'NeulisAlt', sans-serif;
+  font-size: clamp(2rem, 3vw, 3.2rem);
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+}
+
+.universe-card h3 span {
+  color: var(--color-accent);
+}
+
+.universe-card-content>p {
+  max-width: 310px;
+  color: #C1CCD5;
+  font-size: 0.8rem;
+  line-height: 1.8;
+}
+
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  color: white;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.card-link svg {
+  color: var(--color-accent);
+  transition: transform 0.2s ease;
+}
+
+.universe-card:hover .card-link svg {
+  transform: translate(3px, -3px);
+}
+
+.universe-number {
+  position: absolute;
+  top: 22px;
+  left: 25px;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+}
+
+
+/* Tabletas */
+@media (max-width: 1050px) {
+  .universe-card {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 760px) {
+  .universe-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .universe-card {
+    min-height: 370px;
+    padding: 27px;
+  }
+
+  .universe-card h3 {
+    font-size: 2.6rem;
+  }
+}

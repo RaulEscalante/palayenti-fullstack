@@ -1,7 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+@font-face {
+  font-family: 'NeulisAlt';
+  src: url('./assets/fonts/NeulisAlt-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 
 :root {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'NeulisAlt', sans-serif;
   color: #ffffff;
   background: #101820;
   font-synthesis: none;
@@ -34,7 +42,7 @@ body {
 }
 
 body,button,input,textarea,select {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'NeulisAlt', sans-serif;
 }
 
 button,
