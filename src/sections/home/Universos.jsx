@@ -1,7 +1,7 @@
 
 import { ArrowUpRight, Music2, Video } from 'lucide-react';
 import SectionHeading from './SectionHeading.jsx';
-import './Universos.css';
+import './css/Universos.css';
 
 export default function Universos() {
   return (

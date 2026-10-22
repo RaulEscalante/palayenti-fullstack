@@ -1,11 +1,11 @@
 
-import Hero from '../sections/Hero.jsx';
-import Universos from '../sections/Universos.jsx';
-import Novedades from '../sections/Novedades.jsx';
-import Historia from '../sections/Historia.jsx';
-import Galeria from '../sections/Galeria.jsx';
-import Agenda from '../sections/Agenda.jsx';
-import Contacto from '../sections/Contacto.jsx';
+import Hero from '../sections/home/Hero.jsx';
+import Universos from '../sections/home/Universos.jsx';
+import Novedades from '../sections/home/Novedades.jsx';
+import Historia from '../sections/home/Historia.jsx';
+import Galeria from '../sections/home/Galeria.jsx';
+import Agenda from '../sections/home/Agenda.jsx';
+import Contacto from '../sections/home/Contacto.jsx';
 
 export default function Home() {
   return (

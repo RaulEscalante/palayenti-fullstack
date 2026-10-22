@@ -1,7 +1,7 @@
 
 import { ArrowDownRight, Camera, Music2, Video, } from 'lucide-react';
 import SectionHeading from './SectionHeading.jsx';
-import './Galeria.css';
+import './css/Galeria.css';
 
 export default function Galeria() {
   return (

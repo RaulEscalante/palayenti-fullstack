@@ -10,7 +10,7 @@ export default function Footer() {
 
       <span>MÚSICA, HISTORIAS Y EXPERIENCIAS.</span>
 
-      <a href="#inicio" className="back-to-top">
+      <a href="#" className="back-to-top">
         VOLVER ARRIBA ↑
       </a>
 

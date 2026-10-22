@@ -1,7 +1,7 @@
 
 import { ArrowDown, ArrowUpRight, Music2, Play, } from 'lucide-react';
 
-import './Hero.css';
+import './css/Hero.css';
 
 export default function Hero() {
   return (

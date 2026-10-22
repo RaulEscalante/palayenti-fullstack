@@ -1,0 +1,157 @@
+
+.videoclips-section {
+  padding: 100px 9%;
+  color: #FFFFFF;
+  background: #101820;
+}
+
+.videoclips-section .section-heading h2 span {
+  color: #64C5EB;
+}
+
+.videoclips-section .section-heading > p {
+  color: #A9B7C3;
+}
+
+.videoclips-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 24px;
+}
+
+.videoclip-card {
+  min-width: 0;
+}
+
+.videoclip-thumbnail {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  color: #FFFFFF;
+  background: #1A3347;
+  text-decoration: none;
+}
+
+.videoclip-thumbnail > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.videoclip-thumbnail:hover > img {
+  transform: scale(1.04);
+}
+
+.videoclip-placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 24px;
+  background:
+    radial-gradient(
+      circle at 75% 25%,
+      rgba(100, 197, 235, 0.3),
+      transparent 45%
+    ),
+    linear-gradient(135deg, #1B4562, #101820 80%);
+}
+
+.videoclip-placeholder span,
+.videoclip-placeholder small {
+  color: #A9DFF5;
+  font-size: 0.62rem;
+  letter-spacing: 2px;
+}
+
+.videoclip-placeholder strong {
+  max-width: 80%;
+  font-family: 'NeulisAlt', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 2.5rem);
+  line-height: 1.1;
+}
+
+.videoclip-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  color: #101820;
+  background: #64C5EB;
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease;
+}
+
+.videoclip-thumbnail:hover .videoclip-play {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.videoclip-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding-top: 20px;
+}
+
+.videoclip-year {
+  color: #64C5EB;
+  font-size: 0.62rem;
+  letter-spacing: 1.5px;
+}
+
+.videoclip-info h3 {
+  margin: 8px 0;
+  font-size: 1.25rem;
+}
+
+.videoclip-info p {
+  margin: 0;
+  color: #A9B7C3;
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+
+.videoclip-external {
+  flex-shrink: 0;
+  color: #64C5EB;
+}
+
+@media (max-width: 1050px) {
+  .videoclips-section {
+    padding-right: 6%;
+    padding-left: 6%;
+  }
+}
+
+@media (max-width: 600px) {
+  .videoclips-section {
+    padding: 72px 6%;
+  }
+
+  .videoclips-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .videoclip-placeholder {
+    padding: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .videoclip-thumbnail > img,
+  .videoclip-play {
+    transition: none;
+  }
+}

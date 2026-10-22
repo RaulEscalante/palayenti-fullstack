@@ -1,6 +1,6 @@
 
 import { ArrowUpRight, Camera } from 'lucide-react';
-import './Historia.css';
+import './css/Historia.css';
 
 export default function Historia() {
   return (

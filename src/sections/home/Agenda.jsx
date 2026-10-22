@@ -1,6 +1,6 @@
 
 import { CalendarDays } from 'lucide-react';
-import './Agenda.css';
+import './css/Agenda.css';
 
 export default function Agenda() {
   return (

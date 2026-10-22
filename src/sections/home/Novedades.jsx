@@ -2,7 +2,7 @@
 import { ArrowUpRight, Headphones, Play, } from 'lucide-react';
 
 import SectionHeading from './SectionHeading.jsx';
-import './Novedades.css';
+import './css/Novedades.css';
 
 export default function Novedades() {
   return (

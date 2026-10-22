@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { ArrowRight, Camera, Video, } from 'lucide-react';
 import SectionHeading from './SectionHeading.jsx';
-import './Contacto.css';
+import './css/Contacto.css';
 
 export default function Contacto() {
   const [form, setForm] = useState({
