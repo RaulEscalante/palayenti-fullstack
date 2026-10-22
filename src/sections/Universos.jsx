@@ -23,7 +23,7 @@ export default function Universos() {
             <Music2 className="universe-watermark" strokeWidth={0.8} />
           </div>
 
-          <div className="universe-card-content">
+          <div className="universe-card-content">            
             <span className="card-kicker">
               01 / EL PROYECTO MUSICAL
             </span>

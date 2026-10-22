@@ -1,6 +1,9 @@
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
   z-index: 100;
   min-height: 78px;
   padding: 0 7%;
@@ -20,20 +23,15 @@
 }
 
 .brand {
-  font-family: 'NeulisAlt', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: -1.5px;
-  white-space: nowrap;
+  margin:0;
+  padding: 0;
 }
 
-.brand span {
-  color: var(--color-accent);
-}
-
-.brand i {
-  color: var(--color-primary);
-  font-style: normal;
+.brand img {
+  display: block;
+  width: auto;
+  height: 68px;
+  object-fit: contain;
 }
 
 .main-nav {

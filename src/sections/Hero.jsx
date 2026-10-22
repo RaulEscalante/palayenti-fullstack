@@ -1,5 +1,5 @@
 
-import {  ArrowDown,  ArrowUpRight,  Music2,  Play,} from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Music2, Play, } from 'lucide-react';
 
 import './Hero.css';
 
@@ -48,10 +48,7 @@ export default function Hero() {
         </a>
       </div>
 
-      <div
-        className="hero-visual"
-        aria-label="Espacio visual provisional"
-      >
+      <div className="hero-visual" aria-label="Espacio visual provisional">
         <div className="hero-orbit hero-orbit-one" />
         <div className="hero-orbit hero-orbit-two" />
 
@@ -59,7 +56,7 @@ export default function Hero() {
           <div className="placeholder-cross">+</div>
           <Music2 size={62} strokeWidth={1} />
           <span>PALAYENTI</span>
-          <small>IMAGEN PRINCIPAL</small>
+          <img src="portada-palayenti.jpg" alt="PALAYENTI" />
         </div>
 
         <div className="hero-stamp">
