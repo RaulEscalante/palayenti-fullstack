@@ -5,6 +5,7 @@ import Navbar from './components/navbar/Navbar.jsx';
 import Footer from './components/footer/Footer.jsx';
 import Home from './pages/Home.jsx';
 import Musica from './pages/Musica.jsx';
+import Creador from './pages/Creador.jsx';
 
 import './App.css';
 
@@ -29,7 +30,7 @@ export default function App() {
 
           <Route path="/historia" element={<VistaPendiente titulo="Mi historia" />} />
           <Route path="/musica" element={<Musica />} />
-          <Route path="/creador" element={<VistaPendiente titulo="PALAYENTI Creador" />} />
+          <Route path="/creador" element={<Creador />} />
           <Route path="/galeria" element={<VistaPendiente titulo="Galería" />} />
           <Route path="/contacto" element={<VistaPendiente titulo="Contacto" />} />
           <Route path="*" element={<VistaPendiente titulo="Página no encontrada" />} />

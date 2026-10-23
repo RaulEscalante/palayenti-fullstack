@@ -1,0 +1,185 @@
+
+.creador-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 65px;
+  min-height: 690px;
+  overflow: hidden;
+  padding: 130px 9% 90px;
+  color: #101820;
+  background: #f5f8fa;
+}
+
+.creador-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 660px;
+}
+
+.creador-hero-content h1 {
+  margin: 22px 0;
+  font-family: 'NeulisAlt', sans-serif;
+  font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+  line-height: 1.08;
+  letter-spacing: -2.5px;
+}
+
+.creador-hero-content h1 span {
+  color: #1769aa;
+}
+
+.creador-hero-content > p {
+  max-width: 550px;
+  margin: 0;
+  color: #53616d;
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.creador-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.creador-hero-actions .button {
+  text-decoration: none;
+}
+
+.creador-hero-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #1769aa;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-decoration: none;
+}
+
+.creador-hero-link span {
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+.creador-hero-link:hover span {
+  transform: translate(3px, -3px);
+}
+
+.creador-hero-visual {
+  position: relative;
+  padding: 0 0 40px 24px;
+}
+
+.creador-hero-image {
+  position: relative;
+  min-height: 440px;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 70% 25%,
+      rgba(100, 197, 235, 0.65),
+      transparent 40%
+    ),
+    linear-gradient(145deg, #1769aa, #101820);
+}
+
+.creador-hero-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Oculta una imagen que todavía no exista */
+.creador-hero-image img:not([src]),
+.creador-hero-image img[src=''] {
+  display: none;
+}
+
+.creador-hero-label {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 22px 26px;
+  color: #ffffff;
+  background: #1769aa;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}
+
+.creador-hero-number {
+  position: absolute;
+  top: -26px;
+  right: 0;
+  color: #7a8994;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 1050px) {
+  .creador-hero {
+    grid-template-columns: 1fr 0.85fr;
+    gap: 35px;
+    padding-right: 6%;
+    padding-left: 6%;
+  }
+
+  .creador-hero-image {
+    min-height: 380px;
+  }
+
+  .creador-hero-content h1 {
+    font-size: clamp(2.3rem, 4.5vw, 3.6rem);
+  }
+}
+
+@media (max-width: 760px) {
+  .creador-hero {
+    grid-template-columns: 1fr;
+    gap: 45px;
+    padding: 120px 6% 75px;
+  }
+
+  .creador-hero-content h1 {
+    font-size: clamp(2.5rem, 9vw, 4rem);
+    letter-spacing: -1.5px;
+  }
+
+  .creador-hero-content > p {
+    font-size: 0.92rem;
+  }
+
+  .creador-hero-actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .creador-hero-visual {
+    padding-left: 12px;
+  }
+
+  .creador-hero-image {
+    min-height: 340px;
+  }
+
+  .creador-hero-number {
+    top: -25px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .creador-hero-link span {
+    transition: none;
+  }
+}

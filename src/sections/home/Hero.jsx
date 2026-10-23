@@ -1,6 +1,5 @@
 
 import { ArrowDown, ArrowUpRight, Music2, Play, } from 'lucide-react';
-
 import './css/Hero.css';
 
 export default function Hero() {
@@ -15,14 +14,8 @@ export default function Hero() {
           MÚSICA · HISTORIAS · EXPERIENCIAS
         </span>
 
-        <h1>
-          UNA VOZ.
-          <br />
-          <span className="hero-outline">MUCHAS</span>
-          <br />
-          FORMAS DE
-          <br />
-          <span className="hero-blue">EXPRESARSE.</span>
+        <h1>UNA VOZ.<br /> <span className="hero-outline">MUCHAS</span>
+          <br /> FORMAS DE<br /> <span className="hero-blue">EXPRESARSE.</span>
         </h1>
 
         <p className="hero-description">

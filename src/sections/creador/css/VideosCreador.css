@@ -1,0 +1,244 @@
+
+/* ========================================
+   PALAYENTI CREADOR
+   VIDEOS Y PUBLICACIONES AUDIOVISUALES
+======================================== */
+
+.videos-creador-section {
+  padding: 100px 9%;
+  background: #ffffff;
+  color: #101820;
+  scroll-margin-top: 90px;
+}
+
+.videos-creador-section .section-heading h2 span {
+  color: #1769aa;
+}
+
+.videos-creador-section .section-heading > p {
+  max-width: 430px;
+  color: #5f6b75;
+  line-height: 1.8;
+}
+
+/* VIDEO DESTACADO */
+
+.video-creador-featured {
+  max-width: 900px;
+  margin: 45px auto 35px;
+}
+
+.video-creador-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #e5ebef;
+  border-radius: 15px;
+  background: #ffffff;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.video-creador-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(16, 24, 32, 0.08);
+}
+
+.video-creador-miniatura {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: #101820;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.video-creador-miniatura img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.video-creador-card:hover .video-creador-miniatura img {
+  transform: scale(1.04);
+}
+
+/* MINIATURA PROVISIONAL */
+
+.video-creador-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background:
+    radial-gradient(
+      circle at 75% 25%,
+      rgba(100, 197, 235, 0.75),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #101820, #1769aa);
+  text-align: center;
+}
+
+.video-creador-placeholder span {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+}
+
+.video-creador-placeholder strong {
+  max-width: 90%;
+  font-size: clamp(1.1rem, 2.5vw, 2rem);
+  line-height: 1.3;
+}
+
+/* BOTÓN DE REPRODUCCIÓN */
+
+.video-creador-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  background: rgba(16, 24, 32, 0.75);
+  color: #ffffff;
+  transform: translate(-50%, -50%);
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.video-creador-miniatura:hover .video-creador-play {
+  background: #64c5eb;
+  color: #101820;
+}
+
+.video-creador-destacado-label {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 8px 11px;
+  border-radius: 4px;
+  background: #64c5eb;
+  color: #101820;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+}
+
+/* INFORMACIÓN DEL VIDEO */
+
+.video-creador-info {
+  padding: 23px;
+}
+
+.video-creador-categoria {
+  color: #1769aa;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.video-creador-info h3 {
+  margin: 10px 0;
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+
+.video-creador-info p {
+  margin: 0;
+  color: #64717b;
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+
+.video-creador-card-destacado .video-creador-info h3 {
+  font-size: 1.55rem;
+}
+
+.video-creador-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  color: #1769aa;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.video-creador-link:hover {
+  color: #101820;
+}
+
+.video-creador-pendiente {
+  display: inline-block;
+  margin-top: 20px;
+  color: #8a959d;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* RESTO DE VIDEOS */
+
+.videos-creador-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+}
+
+@media (max-width: 900px) {
+  .videos-creador-section {
+    padding: 80px 6%;
+  }
+}
+
+@media (max-width: 600px) {
+  .videos-creador-section {
+    padding: 70px 6%;
+  }
+
+  .videos-creador-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .video-creador-featured {
+    margin-top: 32px;
+  }
+
+  .video-creador-info {
+    padding: 20px;
+  }
+
+  .video-creador-card-destacado .video-creador-info h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video-creador-card,
+  .video-creador-miniatura img,
+  .video-creador-play {
+    transition: none;
+  }
+
+  .video-creador-card:hover,
+  .video-creador-card:hover .video-creador-miniatura img {
+    transform: none;
+  }
+}
