@@ -1,5 +1,6 @@
 
 import { ArrowUpRight, Camera } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import './css/Historia.css';
 
 export default function Historia() {
@@ -27,7 +28,7 @@ export default function Historia() {
         <p>Muy pronto podrás conocer más sobre mis comienzos, mi trayectoria
           y todo lo que inspira lo que hago.</p>
 
-        <a className="button button-outline" href="#contacto">
+        <a className="button button-outline" href="/historia">
           CONECTAR CON PALAYENTI <ArrowUpRight size={17} />
         </a>
       </div>

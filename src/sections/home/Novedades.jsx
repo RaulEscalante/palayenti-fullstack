@@ -1,6 +1,6 @@
 
 import { ArrowUpRight, Headphones, Play, } from 'lucide-react';
-
+import { Link } from 'react-router-dom';
 import SectionHeading from './SectionHeading.jsx';
 import './css/Novedades.css';
 
@@ -36,9 +36,9 @@ export default function Novedades() {
             <p>Descubre el universo musical de Palayenti. Aquí destacaremos
               el último lanzamiento y su enlace oficial.</p>
 
-            <a className="text-link" href="#contacto">
+            <Link className="text-link" to="/musica">
               DESCUBRIR MÚSICA <ArrowUpRight size={17} />
-            </a>
+            </Link>
           </div>
         </article>
 
@@ -68,9 +68,9 @@ export default function Novedades() {
             <p>Videos, vivencias y pensamientos. Un espacio para descubrir
               lo que hay detrás de cada historia.</p>
 
-            <a className="text-link" href="#galeria">
+            <Link className="text-link" to="/creador">
               VER CONTENIDOS <ArrowUpRight size={17} />
-            </a>
+            </Link>
           </div>
         </article>
       </div>

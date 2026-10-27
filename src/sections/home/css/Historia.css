@@ -100,15 +100,31 @@
 
 @media (max-width: 760px) {
   .story-section {
-    grid-template-columns: 1fr;
-    gap: 45px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 35px;
+  }
+
+  .story-visual {
+    padding: 0 12px 18px 0;
   }
 
   .story-visual-inner {
     min-height: 340px;
   }
 
+  .story-visual-inner::before {
+    width: 220px;
+    height: 220px;
+  }
+
+  .story-index {
+    right: 0;
+    bottom: 0;
+    padding: 12px 14px;
+  }
+
   .story-content h2 {
-    font-size: clamp(2.3rem, 9vw, 3.5rem);
+    font-size: clamp(2.1rem, 8vw, 3.2rem);
+    letter-spacing: -1px;
   }
 }

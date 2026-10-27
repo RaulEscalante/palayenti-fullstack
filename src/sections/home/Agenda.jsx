@@ -1,5 +1,5 @@
-
-import { CalendarDays } from 'lucide-react';
+import { CalendarDays, ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import './css/Agenda.css';
 
 export default function Agenda() {
@@ -19,6 +19,9 @@ export default function Agenda() {
         <span className="status-dot" />
         <span>PRÓXIMAMENTE</span>
       </div>
+      <Link className="but  ton button-outline" to="/musica">
+        DESCUBRIR PALAYENTI MÚSICA <ArrowUpRight size={17} />
+      </Link>
     </section>
   );
 }

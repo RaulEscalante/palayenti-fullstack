@@ -7,7 +7,7 @@ export default function Galeria() {
   return (
     <section className="section gallery-section" id="galeria">
       <SectionHeading eyebrow="MOMENTOS QUE QUEDAN" title="DENTRO Y FUERA" highlight="DEL ESCENARIO."
-        description="Un vistazo a los conciertos, las sesiones y las experiencias que forman parte de este universo." />
+        description="Un vistazo a los escenarios, las colaboraciones y las experiencias que forman parte del universo PALAYENTI." />
 
       <div className="gallery-grid">
         <div className="gallery-tile gallery-tile-large">

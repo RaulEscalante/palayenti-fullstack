@@ -1,5 +1,6 @@
 
-import { ArrowDown, ArrowUpRight, Music2, Play, } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowDown, ArrowUpRight, Music2, Play } from 'lucide-react';
 import './css/Hero.css';
 
 export default function Hero() {
@@ -24,16 +25,16 @@ export default function Hero() {
         </p>
 
         <div className="hero-actions">
-          <a className="button button-primary" href="#musica">
+          <Link className="button button-primary" to="/musica">
             <Music2 size={18} />
             Explorar música
             <ArrowUpRight size={17} />
-          </a>
+          </Link>
 
-          <a className="button button-outline" href="#creador">
+          <Link className="button button-outline" to="/creador">
             <Play size={17} />
             Ver mis contenidos
-          </a>
+          </Link>
         </div>
 
         <a className="hero-scroll" href="#universos">

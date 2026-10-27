@@ -1,4 +1,3 @@
-
 .hero {
   position: relative;
   min-height: 650px;
@@ -228,16 +227,37 @@
   color: var(--color-accent);
 }
 
+
 /* Tabletas */
 @media (max-width: 1050px) {
   .hero {
     padding-left: 6%;
     padding-right: 6%;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 24px;
   }
 
   .hero h1 {
-    font-size: clamp(3rem, 6vw, 4.8rem);
+    font-size: clamp(2.8rem, 5.5vw, 4.5rem);
     letter-spacing: -2.5px;
+  }
+
+  .hero-visual {
+    min-width: 0;
+  }
+
+  .hero-orbit-one {
+    width: 380px;
+    height: 380px;
+  }
+
+  .hero-orbit-two {
+    width: 430px;
+    height: 430px;
+  }
+
+  .hero-stamp {
+    right: 0;
   }
 }
 
@@ -245,65 +265,142 @@
 @media (max-width: 760px) {
   .hero {
     min-height: auto;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 75px 6% 75px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    padding: 65px 6% 75px;
+  }
+
+  .hero-content {
+    min-width: 0;
   }
 
   .hero h1 {
-    font-size: clamp(3rem, 12vw, 5rem);
-    letter-spacing: -2.5px;
+    font-size: clamp(2.5rem, 10vw, 4.2rem);
+    line-height: 1.02;
+    letter-spacing: -2px;
+    overflow-wrap: anywhere;
   }
 
   .hero-description {
+    max-width: 100%;
     font-size: 0.84rem;
+    line-height: 1.8;
   }
 
   .hero-actions {
     align-items: stretch;
+    gap: 10px;
   }
 
   .hero-actions .button {
-    flex: 1 1 auto;
+    flex: 1 1 180px;
+    justify-content: center;
+    min-width: 0;
+    text-align: center;
     font-size: 0.65rem;
   }
 
   .hero-scroll {
-    margin-top: 38px;
+    margin-top: 32px;
   }
 
   .hero-visual {
-    min-height: 340px;
-    margin-top: 5px;
+    min-height: 320px;
+    margin-top: 0;
+    min-width: 0;
   }
 
   .hero-placeholder {
-    width: min(76%, 300px);
+    width: min(82%, 290px);
+    aspect-ratio: 0.9;
+  }
+
+  .hero-placeholder > span {
+    font-size: clamp(1.4rem, 6vw, 1.8rem);
+    letter-spacing: 2px;
   }
 
   .hero-orbit-one {
-    width: 320px;
-    height: 320px;
+    width: min(88vw, 320px);
+    height: min(88vw, 320px);
   }
 
   .hero-orbit-two {
-    width: 355px;
-    height: 355px;
+    width: min(98vw, 355px);
+    height: min(98vw, 355px);
   }
 
   .hero-stamp {
     right: 0;
-    bottom: 35px;
+    bottom: 25px;
+    padding: 12px 14px;
+    font-size: 0.55rem;
   }
 
   .hero-side-label {
     right: 0;
+    top: 10px;
   }
 
   .hero-bottom-line {
     left: 6%;
     right: 6%;
-    gap: 10px;
-    font-size: 0.48rem;
+    gap: 8px;
+    font-size: 0.45rem;
+    letter-spacing: 0.7px;
   }
 }
+
+/* Celulares estrechos */
+@media (max-width: 380px) {
+  .hero {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.25rem, 10vw, 2.7rem);
+    letter-spacing: -1.5px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions .button {
+    flex-basis: auto;
+    width: 100%;
+  }
+
+  .hero-visual {
+    min-height: 285px;
+  }
+
+  .hero-placeholder {
+    width: 78%;
+  }
+
+  .hero-stamp {
+    bottom: 15px;
+    padding: 10px 11px;
+    font-size: 0.48rem;
+  }
+
+  .hero-bottom-line {
+    gap: 5px;
+    font-size: 0.4rem;
+    letter-spacing: 0.3px;
+  }
+}
+
+/* Accesibilidad: reducir movimiento si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+  .hero *,
+  .hero *::before,
+  .hero *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+

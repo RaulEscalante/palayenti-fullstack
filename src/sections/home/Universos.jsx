@@ -1,6 +1,7 @@
 
 import { ArrowUpRight, Music2, Video } from 'lucide-react';
 import SectionHeading from './SectionHeading.jsx';
+import { Link } from 'react-router-dom';
 import './css/Universos.css';
 
 export default function Universos() {
@@ -10,7 +11,7 @@ export default function Universos() {
         description="Dos caminos para entrar en mi mundo. Elige el tuyo y quédate por lo que encuentres." />
 
       <div className="universe-grid">
-        <a href="#musica" className="universe-card music-card">
+        <Link to="/musica" className="universe-card music-card">
           <div className="universe-card-bg">
             <div className="music-equalizer">
               {[30, 55, 80, 45, 100, 65, 38, 72, 48, 88, 35].map(
@@ -37,9 +38,9 @@ export default function Universos() {
           </div>
 
           <span className="universe-number">01</span>
-        </a>
+        </Link>
 
-        <a href="#creador" className="universe-card creator-card">
+        <Link to="/creador" className="universe-card creator-card">
           <div className="universe-card-bg">
             <div className="creator-shape creator-shape-one" />
             <div className="creator-shape creator-shape-two" />
@@ -58,7 +59,7 @@ export default function Universos() {
           </div>
 
           <span className="universe-number">02</span>
-        </a>
+        </Link>
       </div>
     </section>
   );

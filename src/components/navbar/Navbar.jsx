@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
 const navLinks = [
@@ -15,6 +15,7 @@ const navLinks = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <header className="site-header">
@@ -22,21 +23,40 @@ export default function Navbar() {
         <img src="/PALAYENTI_logo.png" alt="PALAYENTI" />
       </Link>
 
-      <button className="mobile-menu-toggle" aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
-        aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
+      <button
+        className="mobile-menu-toggle"
+        aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+        aria-expanded={menuOpen}
+        aria-controls="main-navigation"
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
         {menuOpen ? <X /> : <Menu />}
       </button>
 
-      <nav className={`main-nav ${menuOpen ? 'is-open' : ''}`}>
+      <nav
+        id="main-navigation"
+        className={`main-nav ${menuOpen ? 'is-open' : ''}`}
+        aria-label="Navegación principal"
+      >
         {navLinks.map((link) => (
-          <Link key={link.href} to={link.href} onClick={() => setMenuOpen(false)}>
+          <NavLink
+            key={link.href}
+            to={link.href}
+            end={link.href === '/'}
+            onClick={() => setMenuOpen(false)}
+          >
             {link.label}
-          </Link>
+          </NavLink>
         ))}
 
-        <a className="nav-contact" href="#contacto" onClick={() => setMenuOpen(false)}>
+        <Link
+          className={`nav-contact ${location.pathname === '/contacto' ? 'is-current' : ''
+            }`}
+          to="/contacto"
+          onClick={() => setMenuOpen(false)}
+        >
           Hablemos <ArrowUpRight size={15} />
-        </a>
+        </Link>
       </nav>
     </header>
   );
