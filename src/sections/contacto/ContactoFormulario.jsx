@@ -45,7 +45,6 @@ export default function ContactoFormulario() {
 
   const actualizarCampo = (evento) => {
     const { name, value } = evento.target;
-
     setFormulario((anterior) => ({
       ...anterior,
       [name]: value,
@@ -54,9 +53,7 @@ export default function ContactoFormulario() {
 
   const enviarFormulario = (evento) => {
     evento.preventDefault();
-
     const asunto = `Consulta PALAYENTI: ${formulario.motivo}`;
-
     const cuerpo = `
       Hola PALAYENTI:
 
@@ -70,7 +67,6 @@ export default function ContactoFormulario() {
     `;
 
     const enlace = `mailto:contacto@palayenti.com?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
-
     window.location.href = enlace;
   };
 

@@ -1,16 +1,27 @@
 
+/* ========================================
+   FOOTER
+======================================== */
+
 .site-footer {
-  padding: 55px 7% 25px;
+  padding: 48px 7% 22px;
+
   color: #8E9AA5;
   background: #101820;
-  border-top: 1px solid var(--color-border);
+
+  border-top: 1px solid rgba(100, 197, 235, 0.16);
 }
+
+/* ========================================
+   CONTENIDO PRINCIPAL
+======================================== */
 
 .footer-main {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr 1fr;
   gap: 45px;
-  padding-bottom: 40px;
+
+  padding-bottom: 35px;
 }
 
 .footer-identity,
@@ -19,14 +30,20 @@
   min-width: 0;
 }
 
+/* ========================================
+   IDENTIDAD
+======================================== */
+
 .site-footer .footer-brand {
   display: inline-block;
+
   color: white;
   font-family: 'NeulisAlt', sans-serif;
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -1.5px;
   white-space: nowrap;
+  text-decoration: none;
 }
 
 .site-footer .footer-brand span {
@@ -42,19 +59,29 @@
 .footer-connect p {
   max-width: 290px;
   margin: 14px 0 0;
+
   color: #8E9AA5;
   font-size: 0.78rem;
   line-height: 1.8;
 }
 
+/* ========================================
+   TÍTULOS
+======================================== */
+
 .footer-navigation h2,
 .footer-connect h2 {
   margin: 4px 0 18px;
+
   color: var(--color-accent);
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 1.5px;
 }
+
+/* ========================================
+   NAVEGACIÓN
+======================================== */
 
 .footer-navigation nav {
   display: flex;
@@ -67,8 +94,11 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
+
   color: #C4CCD4;
   font-size: 0.78rem;
+  text-decoration: none;
+
   transition: color 0.2s ease;
 }
 
@@ -76,7 +106,10 @@
   color: var(--color-accent);
   opacity: 0;
   transform: translate(-3px, 3px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
 .footer-navigation nav a:hover {
@@ -88,38 +121,58 @@
   transform: translate(0, 0);
 }
 
+/* ========================================
+   CONTACTO
+======================================== */
+
 .footer-contact-link {
   display: inline-flex;
   align-items: center;
   gap: 9px;
+
   margin-top: 18px;
   padding-bottom: 8px;
+
   color: white;
   border-bottom: 1px solid var(--color-accent);
+
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 1px;
+  text-decoration: none;
 }
 
 .footer-contact-link svg {
   color: var(--color-accent);
 }
 
+/* ========================================
+   VOLVER ARRIBA
+======================================== */
+
 .back-to-top {
   display: flex;
   align-items: center;
   gap: 8px;
+
   margin-top: 25px;
   padding: 0;
+
   color: var(--color-accent);
   background: transparent;
   border: 0;
+
   cursor: pointer;
-  font: inherit;
+
+  font-family: inherit;
   font-size: 0.58rem;
   font-weight: 700;
   letter-spacing: 1px;
 }
+
+/* ========================================
+   CIERRE LEGAL
+======================================== */
 
 .footer-bottom {
   display: flex;
@@ -127,7 +180,9 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 15px;
+
   padding-top: 22px;
+
   border-top: 1px solid var(--color-border);
 }
 
@@ -140,9 +195,17 @@
   line-height: 1.8;
 }
 
+.footer-bottom > a {
+  text-decoration: none;
+}
+
 .footer-bottom > a:hover {
   color: var(--color-accent);
 }
+
+/* ========================================
+   TABLETS
+======================================== */
 
 @media (max-width: 900px) {
   .footer-main {
@@ -154,6 +217,10 @@
     grid-column: 1 / -1;
   }
 }
+
+/* ========================================
+   MÓVILES
+======================================== */
 
 @media (max-width: 600px) {
   .site-footer {
@@ -189,6 +256,19 @@
     flex-direction: column;
     gap: 10px;
   }
+}
+
+/* ========================================
+   ACCESIBILIDAD
+======================================== */
+
+.footer-navigation nav a:focus-visible,
+.footer-contact-link:focus-visible,
+.back-to-top:focus-visible,
+.footer-brand:focus-visible,
+.footer-bottom > a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
 }
 
 @media (prefers-reduced-motion: reduce) {

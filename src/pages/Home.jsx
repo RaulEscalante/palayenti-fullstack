@@ -1,4 +1,3 @@
-
 import Hero from '../sections/home/Hero.jsx';
 import Universos from '../sections/home/Universos.jsx';
 import Novedades from '../sections/home/Novedades.jsx';

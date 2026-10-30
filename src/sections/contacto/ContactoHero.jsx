@@ -11,17 +11,13 @@ export default function ContactoHero() {
           CONECTEMOS
         </span>
 
-        <h1>
-          Las buenas ideas
-          <br />
+        <h1>Las buenas ideas<br />
           <span>comienzan hablando.</span>
         </h1>
 
-        <p>
-          ¿Tienes una propuesta, una idea o simplemente quieres
+        <p>¿Tienes una propuesta, una idea o simplemente quieres
           ponerte en contacto? Este es el espacio para comenzar
-          una conversación.
-        </p>
+          una conversación.</p>
 
         <a href="#contacto-formulario" className="contact-hero-link">
           ESCRÍBEME
@@ -40,9 +36,7 @@ export default function ContactoHero() {
 
           <span className="contact-visual-label">PALAYENTI</span>
 
-          <h2>
-            Una conversación.
-            <br />
+          <h2>Una conversación.<br />
             <span>Una nueva posibilidad.</span>
           </h2>
 

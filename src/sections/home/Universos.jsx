@@ -1,22 +1,30 @@
 
 import { ArrowUpRight, Music2, Video } from 'lucide-react';
-import SectionHeading from './SectionHeading.jsx';
 import { Link } from 'react-router-dom';
+import SectionHeading from './SectionHeading.jsx';
+import Reveal from '../../components/reveal/Reveal.jsx';
 import './css/Universos.css';
 
 export default function Universos() {
   return (
     <section className="section universes-section" id="universos">
-      <SectionHeading eyebrow="DOS FACETAS · UNA MISMA ESENCIA" title="¿QUÉ QUIERES" highlight="DESCUBRIR?"
-        description="Dos caminos para entrar en mi mundo. Elige el tuyo y quédate por lo que encuentres." />
+      <SectionHeading
+        eyebrow="DOS FACETAS · UNA MISMA ESENCIA"
+        title="¿QUÉ QUIERES"
+        highlight="DESCUBRIR?"
+        description="Dos caminos para entrar en mi mundo. Elige el tuyo y quédate por lo que encuentres."
+      />
 
-      <div className="universe-grid">
+      <Reveal delay={180} className="universe-grid">
         <Link to="/musica" className="universe-card music-card">
           <div className="universe-card-bg">
             <div className="music-equalizer">
               {[30, 55, 80, 45, 100, 65, 38, 72, 48, 88, 35].map(
                 (height, index) => (
-                  <span key={index} style={{ '--bar-height': `${height}%` }} />
+                  <span
+                    key={index}
+                    style={{ '--bar-height': `${height}%` }}
+                  />
                 ),
               )}
             </div>
@@ -24,13 +32,18 @@ export default function Universos() {
             <Music2 className="universe-watermark" strokeWidth={0.8} />
           </div>
 
-          <div className="universe-card-content">            
+          <div className="universe-card-content">
             <span className="card-kicker">
               01 / EL PROYECTO MUSICAL
             </span>
 
-            <h3>PALAYENTI<br /> MÚSICA<span>.</span></h3>
-            <p>Canciones, escenarios y momentos que merecen ser escuchados.</p>
+            <h3>
+              PALAYENTI<br />MÚSICA<span>.</span>
+            </h3>
+
+            <p>
+              Canciones, escenarios y momentos que merecen ser escuchados.
+            </p>
 
             <span className="card-link">
               ENTRAR AL UNIVERSO <ArrowUpRight size={17} />
@@ -51,8 +64,15 @@ export default function Universos() {
             <span className="card-kicker">
               02 / EL LADO PERSONAL
             </span>
-            <h3> PALAYENTI <br />CREADOR<span>.</span></h3>
-            <p>Historias, experiencias e ideas que quiero compartir contigo.</p>
+
+            <h3>
+              PALAYENTI<br />CREADOR<span>.</span>
+            </h3>
+
+            <p>
+              Historias, experiencias e ideas que quiero compartir contigo.
+            </p>
+
             <span className="card-link">
               EXPLORAR CONTENIDO <ArrowUpRight size={17} />
             </span>
@@ -60,7 +80,7 @@ export default function Universos() {
 
           <span className="universe-number">02</span>
         </Link>
-      </div>
+      </Reveal>
     </section>
   );
 }

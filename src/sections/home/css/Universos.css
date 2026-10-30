@@ -1,3 +1,4 @@
+/* SECCIÓN UNIVERSOS */
 .universes-section {
   background: #F5F8FA;
   color: var(--color-background);
@@ -9,24 +10,48 @@
   gap: 22px;
 }
 
+/* TARJETAS */
+
 .universe-card {
   position: relative;
-  min-height: 390px;
   display: flex;
   align-items: end;
+  min-width: 0;
+  min-height: 390px;
   padding: 35px;
   overflow: hidden;
-  color: white;
-  background: #101820;
   isolation: isolate;
+  color: white;
+  text-decoration: none;
+  background: #101820;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
+
+.universe-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(16, 24, 32, 0.16);
+}
+
+.universe-card:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 5px;
+}
+
+/* FONDOS Y EFECTOS */
 
 .universe-card-bg {
   position: absolute;
   z-index: -1;
   inset: 0;
   overflow: hidden;
+  pointer-events: none;
   background: linear-gradient(135deg, #17232E, #101820);
+  transition: filter 0.4s ease;
+}
+
+.universe-card:hover .universe-card-bg {
+  filter: brightness(1.15);
 }
 
 .music-card .universe-card-bg {
@@ -48,16 +73,20 @@
   background: linear-gradient(to top, rgba(7, 13, 19, 0.98), transparent 90%);
 }
 
+/* UNIVERSO MUSICAL */
+
 .music-equalizer {
   position: absolute;
   top: 35px;
   right: 35px;
   left: 35px;
-  height: 155px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  width: auto;
+  max-width: calc(100% - 70px);
+  height: 155px;
   opacity: 0.65;
 }
 
@@ -65,19 +94,33 @@
   width: 5px;
   height: var(--bar-height);
   max-height: 100%;
+  min-height: 3px;
   border-radius: 5px;
   background: var(--color-accent);
   opacity: 0.75;
+  transform-origin: center;
+  animation: equalizerPulse 1.8s ease-in-out infinite alternate;
 }
 
-.universe-watermark {
-  position: absolute;
-  top: 40px;
-  right: 38px;
-  width: 130px;
-  height: 130px;
-  color: rgba(100, 197, 235, 0.18);
+.music-equalizer span:nth-child(2n) {
+  animation-delay: 0.3s;
 }
+
+.music-equalizer span:nth-child(3n) {
+  animation-delay: 0.6s;
+}
+
+@keyframes equalizerPulse {
+  from {
+    transform: scaleY(0.65);
+  }
+
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/*  UNIVERSO CREADOR */
 
 .creator-shape {
   position: absolute;
@@ -99,9 +142,39 @@
   height: 320px;
 }
 
+/* ELEMENTOS GRÁFICOS COMPARTIDOS */
+
+.universe-watermark {
+  position: absolute;
+  top: 40px;
+  right: 38px;
+  width: 130px;
+  height: 130px;
+  color: rgba(100, 197, 235, 0.18);
+  transition: transform 0.5s ease, color 0.5s ease;
+}
+
+.universe-card:hover .universe-watermark {
+  transform: scale(1.08);
+  color: rgba(100, 197, 235, 0.3);
+}
+
+.universe-number {
+  position: absolute;
+  top: 22px;
+  left: 25px;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+}
+
+/*  CONTENIDO */
+
 .universe-card-content {
   position: relative;
   z-index: 2;
+  width: 100%;
+  min-width: 0;
   max-width: 420px;
 }
 
@@ -118,6 +191,7 @@
   font-size: clamp(2rem, 3vw, 3.2rem);
   line-height: 1.05;
   letter-spacing: -1.5px;
+  overflow-wrap: anywhere;
 }
 
 .universe-card h3 span {
@@ -125,7 +199,7 @@
 }
 
 .universe-card-content>p {
-  max-width: 310px;
+  max-width: 100%;
   color: #C1CCD5;
   font-size: 0.8rem;
   line-height: 1.8;
@@ -135,11 +209,14 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  width: fit-content;
+  max-width: 100%;
   margin-top: 18px;
   color: white;
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 1px;
+  line-height: 1.6;
 }
 
 .card-link svg {
@@ -151,49 +228,7 @@
   transform: translate(3px, -3px);
 }
 
-.universe-number {
-  position: absolute;
-  top: 22px;
-  left: 25px;
-  color: rgba(255, 255, 255, 0.45);
-  font-size: 0.65rem;
-  letter-spacing: 1px;
-}
-
-.universe-card {
-  min-width: 0;
-}
-
-.universe-card-content {
-  width: 100%;
-  min-width: 0;
-}
-
-.universe-card h3 {
-  overflow-wrap: anywhere;
-}
-
-.universe-card-content > p {
-  max-width: 100%;
-}
-
-.music-equalizer {
-  max-width: calc(100% - 70px);
-}
-
-.music-equalizer span {
-  min-height: 3px;
-}
-
-.universe-card-bg {
-  pointer-events: none;
-}
-
-.card-link {
-  width: fit-content;
-  max-width: 100%;
-  line-height: 1.6;
-}
+/* TABLETS */
 
 @media (max-width: 1050px) {
   .universe-grid {
@@ -214,6 +249,8 @@
   }
 }
 
+/*  MÓVILES */
+
 @media (max-width: 760px) {
   .universe-grid {
     grid-template-columns: minmax(0, 1fr);
@@ -233,12 +270,13 @@
     left: 25px;
     right: 25px;
     gap: 7px;
+    max-width: calc(100% - 50px);
   }
 
   .universe-watermark {
+    right: 25px;
     width: 100px;
     height: 100px;
-    right: 25px;
   }
 
   .creator-shape-two {
@@ -266,8 +304,22 @@
   }
 }
 
+/* ACCESIBILIDAD */
+
 @media (prefers-reduced-motion: reduce) {
+
+  .universe-card,
+  .universe-card-bg,
+  .universe-watermark,
   .card-link svg {
     transition: none;
+  }
+
+  .music-equalizer span {
+    animation: none;
+  }
+
+  .universe-card:hover {
+    transform: none;
   }
 }

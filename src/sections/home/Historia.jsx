@@ -1,12 +1,13 @@
 
 import { ArrowUpRight, Camera } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Reveal from '../../components/reveal/Reveal.jsx';
 import './css/Historia.css';
 
 export default function Historia() {
   return (
     <section className="section story-section" id="historia">
-      <div className="story-visual">
+      <Reveal direction="left" className="story-visual">
         <div className="story-visual-inner">
           <Camera size={48} strokeWidth={1} />
           <span>UN ESPACIO PARA MI HISTORIA</span>
@@ -14,24 +15,32 @@ export default function Historia() {
         </div>
 
         <div className="story-index">PALAYENTI / BIO</div>
-      </div>
+      </Reveal>
 
-      <div className="story-content">
+      <Reveal direction="right" delay={150} className="story-content">
         <span className="eyebrow">DETRÁS DEL NOMBRE</span>
 
-        <h2>UNA HISTORIA <br />QUE SIGUE <br /><span>ESCRIBIÉNDOSE.</span></h2>
-       
-        <p>La música es una parte de mí, pero no es la única. Este espacio
+        <h2>
+          UNA HISTORIA <br />
+          QUE SIGUE <br />
+          <span>ESCRIBIÉNDOSE.</span>
+        </h2>
+
+        <p>
+          La música es una parte de mí, pero no es la única. Este espacio
           reúne las experiencias, las ideas y los momentos que me han
-          traído hasta aquí.</p>
+          traído hasta aquí.
+        </p>
 
-        <p>Muy pronto podrás conocer más sobre mis comienzos, mi trayectoria
-          y todo lo que inspira lo que hago.</p>
+        <p>
+          Muy pronto podrás conocer más sobre mis comienzos, mi trayectoria
+          y todo lo que inspira lo que hago.
+        </p>
 
-        <a className="button button-outline" href="/historia">
+        <Link className="button button-outline" to="/historia">
           CONECTAR CON PALAYENTI <ArrowUpRight size={17} />
-        </a>
-      </div>
+        </Link>
+      </Reveal>
     </section>
   );
 }

@@ -1,3 +1,8 @@
+
+/* ========================================
+   SECCIÓN NOVEDADES
+======================================== */
+
 .news-section {
   color: white;
   background: #101820;
@@ -7,9 +12,14 @@
   color: var(--color-accent);
 }
 
+/* ========================================
+   DISTRIBUCIÓN
+======================================== */
+
 .news-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
   gap: 35px;
 }
 
@@ -17,21 +27,51 @@
   min-width: 0;
 }
 
+/* ========================================
+   PORTADAS
+======================================== */
+
 .news-artwork {
   position: relative;
-  min-height: 280px;
+
   display: grid;
   place-items: center;
+
+  min-width: 0;
+  min-height: 280px;
   overflow: hidden;
+
   background:
-    radial-gradient(circle at 50% 50%, rgba(100, 197, 235, 0.2), transparent 38%),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(100, 197, 235, 0.2),
+      transparent 38%
+    ),
     linear-gradient(140deg, #1B3B54, #101820);
 }
 
+.creator-artwork {
+  background:
+    radial-gradient(
+      circle at 70% 25%,
+      rgba(100, 197, 235, 0.25),
+      transparent 35%
+    ),
+    linear-gradient(140deg, #1B3445, #101820);
+}
+
+/* ========================================
+   ELEMENTOS GRÁFICOS MUSICALES
+======================================== */
+
 .artwork-circle {
   position: absolute;
+
   width: 220px;
   height: 220px;
+  max-width: 85%;
+  max-height: 85%;
+
   border: 1px solid rgba(100, 197, 235, 0.55);
   border-radius: 50%;
 }
@@ -39,7 +79,9 @@
 .artwork-circle-two {
   width: 170px;
   height: 170px;
+
   border-style: dashed;
+
   animation: slow-spin 35s linear infinite;
 }
 
@@ -51,23 +93,68 @@
 
 .artwork-center {
   z-index: 1;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
+
+  max-width: 90%;
+
   color: var(--color-accent);
+  text-align: center;
 }
 
 .artwork-center span,
-.video-frame>span {
+.video-frame > span {
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 2px;
+  line-height: 1.6;
+  text-align: center;
 }
+
+/* ========================================
+   ELEMENTOS GRÁFICOS DEL CREADOR
+======================================== */
+
+.video-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+
+  width: 55%;
+  max-width: 360px;
+  min-width: 0;
+  aspect-ratio: 16 / 9;
+
+  border: 1px solid rgba(100, 197, 235, 0.55);
+
+  color: var(--color-accent);
+  background: rgba(16, 24, 32, 0.55);
+}
+
+.video-frame-inner {
+  display: grid;
+  place-items: center;
+
+  width: 55px;
+  height: 55px;
+
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+}
+
+/* ========================================
+   ETIQUETAS DE PORTADA
+======================================== */
 
 .artwork-label,
 .artwork-caption {
   position: absolute;
+
   color: #CFDCE5;
   font-size: 0.55rem;
   font-weight: 600;
@@ -82,36 +169,13 @@
 .artwork-caption {
   right: 20px;
   bottom: 20px;
+
   color: #8BA2B4;
 }
 
-.creator-artwork {
-  background:
-    radial-gradient(circle at 70% 25%, rgba(100, 197, 235, 0.25), transparent 35%),
-    linear-gradient(140deg, #1B3445, #101820);
-}
-
-.video-frame {
-  width: 55%;
-  aspect-ratio: 16 / 9;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  border: 1px solid rgba(100, 197, 235, 0.55);
-  color: var(--color-accent);
-  background: rgba(16, 24, 32, 0.55);
-}
-
-.video-frame-inner {
-  width: 55px;
-  height: 55px;
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--color-accent);
-  border-radius: 50%;
-}
+/* ========================================
+   INFORMACIÓN
+======================================== */
 
 .news-info {
   padding-top: 25px;
@@ -126,75 +190,73 @@
 
 .news-info h3 {
   margin: 14px 0;
+
   font-family: 'NeulisAlt', sans-serif;
   font-size: clamp(1.7rem, 2.6vw, 2.4rem);
   line-height: 1.15;
   letter-spacing: -1px;
+
+  overflow-wrap: anywhere;
 }
 
-.news-info>p {
+.news-info > p {
   max-width: 420px;
+
   color: var(--color-muted);
   font-size: 0.8rem;
   line-height: 1.9;
 }
 
+/* ========================================
+   ENLACES
+======================================== */
+
 .text-link {
   display: inline-flex;
   align-items: center;
   gap: 10px;
+
+  width: fit-content;
+  max-width: 100%;
   margin-top: 12px;
   padding-bottom: 7px;
+
   border-bottom: 1px solid rgba(100, 197, 235, 0.5);
+
   color: white;
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 1px;
+  line-height: 1.6;
+  text-decoration: none;
+
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .text-link svg {
   color: var(--color-accent);
+  transition: transform 0.25s ease;
 }
 
-
-.news-grid {
-  align-items: start;
+.text-link:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
 }
 
-.news-artwork {
-  min-width: 0;
+.text-link:hover svg {
+  transform: translate(3px, -3px);
 }
 
-.artwork-circle {
-  max-width: 85%;
-  max-height: 85%;
+.text-link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 5px;
 }
 
-.artwork-center {
-  max-width: 90%;
-  text-align: center;
-}
-
-.artwork-center span,
-.video-frame > span {
-  line-height: 1.6;
-  text-align: center;
-}
-
-.video-frame {
-  max-width: 360px;
-  min-width: 0;
-}
-
-.news-info h3 {
-  overflow-wrap: anywhere;
-}
-
-.text-link {
-  width: fit-content;
-  max-width: 100%;
-  line-height: 1.6;
-}
+/* ========================================
+   TABLETS Y MÓVILES
+======================================== */
 
 @media (max-width: 760px) {
   .news-grid {
@@ -210,6 +272,10 @@
     padding-top: 20px;
   }
 }
+
+/* ========================================
+   MÓVILES PEQUEÑOS
+======================================== */
 
 @media (max-width: 380px) {
   .news-artwork {
@@ -237,8 +303,17 @@
   }
 }
 
+/* ========================================
+   ACCESIBILIDAD
+======================================== */
+
 @media (prefers-reduced-motion: reduce) {
   .artwork-circle-two {
     animation: none;
+  }
+
+  .text-link,
+  .text-link svg {
+    transition: none;
   }
 }

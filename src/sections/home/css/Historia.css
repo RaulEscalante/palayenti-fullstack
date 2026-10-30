@@ -1,3 +1,4 @@
+/*  SECCIÓN HISTORIA */
 .story-section {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
@@ -7,31 +8,37 @@
   background: #F5F8FA;
 }
 
+/* ESPACIO VISUAL */
 .story-visual {
   position: relative;
+  min-width: 0;
   padding: 0 0 25px 25px;
 }
 
 .story-visual-inner {
   position: relative;
-  min-height: 410px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 18px;
+  min-height: 410px;
   overflow: hidden;
   color: var(--color-accent);
   background:
-    radial-gradient(ellipse at 50% 40%, rgba(100, 197, 235, 0.2), transparent 48%),
+    radial-gradient(ellipse at 50% 40%, rgba(100, 197, 235, 0.2),
+      transparent 48%),
     linear-gradient(135deg, #203F55, #101820);
 }
 
+/* Elemento decorativo provisional */
 .story-visual-inner::before {
   position: absolute;
+  content: '';
+
   width: 260px;
   height: 260px;
-  content: '';
+
   border: 1px solid rgba(100, 197, 235, 0.3);
   border-radius: 50%;
 }
@@ -56,6 +63,7 @@
   letter-spacing: 1.5px;
 }
 
+/* Identificador de la sección */
 .story-index {
   position: absolute;
   right: -10px;
@@ -66,6 +74,11 @@
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 1.5px;
+}
+
+/* CONTENIDO */
+.story-content {
+  min-width: 0;
 }
 
 .story-content h2 {
@@ -88,6 +101,8 @@
   line-height: 1.95;
 }
 
+/* BOTÓN */
+
 .story-content .button {
   margin-top: 17px;
   color: var(--color-background);
@@ -98,6 +113,7 @@
   border-color: var(--color-primary);
 }
 
+/* TABLETS Y MÓVILES */
 @media (max-width: 760px) {
   .story-section {
     grid-template-columns: minmax(0, 1fr);
@@ -120,6 +136,7 @@
   .story-index {
     right: 0;
     bottom: 0;
+
     padding: 12px 14px;
   }
 

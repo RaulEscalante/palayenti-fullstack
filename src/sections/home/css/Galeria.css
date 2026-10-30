@@ -1,4 +1,8 @@
 
+/* ========================================
+   SECCIÓN GALERÍA
+======================================== */
+
 .gallery-section {
   color: white;
   background: #101820;
@@ -8,47 +12,111 @@
   color: var(--color-accent);
 }
 
+/* ========================================
+   DISTRIBUCIÓN
+======================================== */
+
 .gallery-grid {
   display: grid;
   grid-template-columns: 1.3fr 1fr 1fr;
   gap: 16px;
 }
 
+/* ========================================
+   TARJETAS
+======================================== */
+
 .gallery-tile {
   position: relative;
-  min-height: 230px;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  min-width: 0;
+  min-height: 230px;
   padding: 25px;
   overflow: hidden;
+  isolation: isolate;
+
   color: var(--color-accent);
   background: linear-gradient(145deg, #203F55, #14212C);
-  transition: border-color 0.25s ease, filter 0.25s ease;
+
+  transition:
+    filter 0.3s ease,
+    transform 0.3s ease;
 }
+
+/* Fotografías */
+.gallery-image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  transition: transform 0.5s ease;
+}
+
+/* Aro decorativo */
+.gallery-tile::after {
+  z-index: -1;
+}
+
+/* Oscurecimiento para mejorar la lectura */
+.gallery-tile::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: '';
+
+  background: linear-gradient(
+    180deg,
+    rgba(16, 24, 32, 0.05),
+    rgba(16, 24, 32, 0.55)
+  );
+}
+
+/* Efectos al pasar el cursor */
+.gallery-tile:hover .gallery-image {
+  transform: scale(1.04);
+}
+/* Elemento decorativo */
 
 .gallery-tile::after {
   position: absolute;
+  z-index: -1;
+  content: '';
+
+  top: -55px;
+  right: -55px;
+
   width: 170px;
   height: 170px;
-  right: -55px;
-  top: -55px;
-  content: '';
+
   border: 1px solid rgba(100, 197, 235, 0.4);
   border-radius: 50%;
+
+  transition: transform 0.4s ease;
 }
 
-.gallery-tile>svg,
-.gallery-tile>span {
+.gallery-tile > svg,
+.gallery-tile > span {
+  position: relative;
   z-index: 1;
 }
 
-.gallery-tile>span {
+.gallery-tile > span {
   color: white;
   font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 1px;
+  line-height: 1.6;
 }
+
+/* Variantes */
 
 .gallery-tile-blue {
   color: white;
@@ -60,33 +128,50 @@
   background: linear-gradient(145deg, #64C5EB, #BDEBFA);
 }
 
-.gallery-tile-light>span {
+.gallery-tile-light > span {
   color: #101820;
 }
+
+/* Interacción */
+
+.gallery-tile:hover {
+  filter: brightness(1.12);
+  transform: translateY(-4px);
+}
+
+.gallery-tile:hover::after {
+  transform: scale(1.15);
+}
+
+/* ========================================
+   PIE DE GALERÍA
+======================================== */
 
 .gallery-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 14px;
+
   margin-top: 18px;
+
   color: #8796A3;
   font-size: 0.58rem;
   letter-spacing: 1px;
 }
 
+.gallery-footer > * {
+  min-width: 0;
+}
+
 .gallery-footer svg {
+  flex-shrink: 0;
   color: var(--color-accent);
 }
 
-.gallery-tile:hover {
-  filter: brightness(1.12);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .gallery-tile {
-    transition: none;
-  }
-}
+/* ========================================
+   TABLETS Y MÓVILES
+======================================== */
 
 @media (max-width: 760px) {
   .gallery-grid {
@@ -100,7 +185,6 @@
   }
 
   .gallery-tile {
-    min-width: 0;
     min-height: 175px;
     padding: 16px;
   }
@@ -112,19 +196,13 @@
 
   .gallery-tile > span {
     font-size: 0.52rem;
-    line-height: 1.6;
     overflow-wrap: anywhere;
   }
 
   .gallery-footer {
     align-items: flex-start;
-    gap: 14px;
     font-size: 0.52rem;
     line-height: 1.7;
-  }
-
-  .gallery-footer > * {
-    min-width: 0;
   }
 }
 
@@ -143,5 +221,19 @@
 
   .gallery-footer {
     flex-wrap: wrap;
+  }
+}
+
+/* ========================================
+   ACCESIBILIDAD
+======================================== */
+@media (prefers-reduced-motion: reduce) {
+  .gallery-tile,
+  .gallery-tile::after {
+    transition: none;
+  }
+
+  .gallery-tile:hover {
+    transform: none;
   }
 }

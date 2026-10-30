@@ -15,6 +15,7 @@ export default function CTAFinal({
   return (
     <section className="cta-final">
       <div className="cta-final-glow" />
+      <div className="cta-final-orbit" />
 
       <div className="cta-final-content">
         <span className="eyebrow">{etiqueta}</span>
@@ -30,9 +31,9 @@ export default function CTAFinal({
             target="_blank"
             rel="noreferrer"
           >
-            <MessageCircle size={19} />
+            <MessageCircle size={18} />
             {textoBoton}
-            <ArrowUpRight size={18} />
+            <ArrowUpRight size={17} />
           </a>
         ) : (
           <span className="cta-final-note">
@@ -41,10 +42,7 @@ export default function CTAFinal({
         )}
       </div>
 
-      <div className="cta-final-footer">
-        <span>PALAYENTI</span>
-        <span>CREATIVIDAD · MÚSICA · EXPERIENCIAS</span>
-      </div>
+      <span className="cta-final-index">PALAYENTI / CONECTEMOS</span>
     </section>
   );
 }

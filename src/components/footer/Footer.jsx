@@ -13,12 +13,16 @@ const footerLinks = [
 
 export default function Footer() {
   const volverArriba = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
   return (
     <footer className="site-footer">
       <div className="footer-main">
+        {/* Identidad */}
         <div className="footer-identity">
           <Link
             className="brand footer-brand"
@@ -32,6 +36,7 @@ export default function Footer() {
           <p>Música, historias y experiencias.</p>
         </div>
 
+        {/* Navegación */}
         <div className="footer-navigation">
           <h2>EXPLORA</h2>
 
@@ -49,6 +54,7 @@ export default function Footer() {
           </nav>
         </div>
 
+        {/* Contacto */}
         <div className="footer-connect">
           <h2>¿CONECTAMOS?</h2>
 
@@ -68,12 +74,14 @@ export default function Footer() {
             className="back-to-top"
             type="button"
             onClick={volverArriba}
+            aria-label="Volver al inicio de la página"
           >
             VOLVER ARRIBA <ArrowUp size={14} />
           </button>
         </div>
       </div>
 
+      {/* Cierre */}
       <div className="footer-bottom">
         <small>
           © {new Date().getFullYear()} PALAYENTI · TODOS LOS DERECHOS RESERVADOS

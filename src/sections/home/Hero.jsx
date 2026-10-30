@@ -9,22 +9,26 @@ export default function Hero() {
       <div className="hero-glow" />
       <div className="hero-grid" />
 
-      <div className="hero-content">
-        <span className="eyebrow">
+      <div className="hero-content hero-animate-content">
+        <span className="eyebrow hero-animate-item">
           <span className="status-dot" />
           MÚSICA · HISTORIAS · EXPERIENCIAS
         </span>
 
-        <h1>UNA VOZ.<br /> <span className="hero-outline">MUCHAS</span>
-          <br /> FORMAS DE<br /> <span className="hero-blue">EXPRESARSE.</span>
+        <h1 className="hero-animate-item">
+          UNA VOZ.<br />
+          <span className="hero-outline">MUCHAS</span>
+          <br />
+          FORMAS DE<br />
+          <span className="hero-blue">EXPRESARSE.</span>
         </h1>
 
-        <p className="hero-description">
+        <p className="hero-description hero-animate-item">
           Soy Palayenti. Este es mi universo: la música que comparto,
           las historias que vivo y todo lo que tengo por contar.
         </p>
 
-        <div className="hero-actions">
+        <div className="hero-actions hero-animate-item">
           <Link className="button button-primary" to="/musica">
             <Music2 size={18} />
             Explorar música
@@ -37,26 +41,35 @@ export default function Hero() {
           </Link>
         </div>
 
-        <a className="hero-scroll" href="#universos">
+        <a className="hero-scroll hero-animate-item" href="#universos">
           DESCUBRE MI UNIVERSO <ArrowDown size={15} />
         </a>
       </div>
 
-      <div className="hero-visual" aria-label="Espacio visual provisional">
-        <div className="hero-orbit hero-orbit-one" />
-        <div className="hero-orbit hero-orbit-two" />
+
+      <div className="hero-visual hero-animate-visual" aria-label="Imagen de PALAYENTI">
+        <div className="hero-visual-decoration" />
+
+        <div className="hero-photo-tag">
+          <span className="status-dot" />
+          UNIVERSO CREATIVO
+        </div>
 
         <div className="hero-placeholder">
-          <div className="placeholder-cross">+</div>
-          <Music2 size={62} strokeWidth={1} />
-          <span>PALAYENTI</span>
-          <img src="portada-palayenti.jpg" alt="PALAYENTI" />
+          <img
+            src="/portada-palayenti.jpg"
+            alt="PALAYENTI"
+            className="hero-image"
+          />
         </div>
 
         <div className="hero-stamp">
-          <span>ARTISTA</span>
-          <span className="stamp-line" />
-          <span>CREADOR</span>
+          <Music2 size={17} />
+          <div>
+            <span>PALAYENTI</span>
+            <small>MÚSICA · CREADOR</small>
+          </div>
+          <ArrowUpRight size={17} />
         </div>
 
         <div className="hero-side-label">
@@ -64,7 +77,8 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="hero-bottom-line">
+
+      <div className="hero-bottom-line hero-animate-bottom">
         <span>UNA SOLA IDENTIDAD</span>
         <span>DOS UNIVERSOS</span>
         <span className="hero-bottom-index">01 / 06</span>
