@@ -9,6 +9,7 @@ import Historia from './pages/Historia.jsx';
 import Musica from './pages/Musica.jsx';
 import Creador from './pages/Creador.jsx';
 import Galeria from './pages/Galeria.jsx';
+import Contacto from './pages/Contacto.jsx';
 
 import './App.css';
 
@@ -35,7 +36,7 @@ export default function App() {
           <Route path="/musica" element={<Musica />} />
           <Route path="/creador" element={<Creador />} />
           <Route path="/galeria" element={<Galeria />} />
-          <Route path="/contacto" element={<VistaPendiente titulo="Contacto" />} />
+          <Route path="/contacto" element={<Contacto />} />
           <Route path="*" element={<VistaPendiente titulo="Página no encontrada" />} />
 
         </Routes>
