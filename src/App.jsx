@@ -8,6 +8,7 @@ import Home from './pages/Home.jsx';
 import Historia from './pages/Historia.jsx';
 import Musica from './pages/Musica.jsx';
 import Creador from './pages/Creador.jsx';
+import Galeria from './pages/Galeria.jsx';
 
 import './App.css';
 
@@ -33,7 +34,7 @@ export default function App() {
           <Route path="/historia" element={<Historia />} />
           <Route path="/musica" element={<Musica />} />
           <Route path="/creador" element={<Creador />} />
-          <Route path="/galeria" element={<VistaPendiente titulo="Galería" />} />
+          <Route path="/galeria" element={<Galeria />} />
           <Route path="/contacto" element={<VistaPendiente titulo="Contacto" />} />
           <Route path="*" element={<VistaPendiente titulo="Página no encontrada" />} />
 
