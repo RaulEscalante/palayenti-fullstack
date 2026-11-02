@@ -24,70 +24,26 @@
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: #101820;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
 }
 
-.lanzamiento-cover {
-  position: relative;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  background: #1A3347;
+.lanzamiento-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(100, 197, 235, 0.45);
 }
 
-.lanzamiento-cover > img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.lanzamiento-placeholder {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  padding: 24px;
-  background:
-    radial-gradient(
-      circle at 75% 25%,
-      rgba(100, 197, 235, 0.3),
-      transparent 45%
-    ),
-    linear-gradient(145deg, #1B4562, #101820 75%);
-}
-
-.lanzamiento-placeholder > span,
-.lanzamiento-placeholder small {
-  color: #A9DFF5;
-  font-size: 0.62rem;
-  letter-spacing: 2px;
-}
-
-.lanzamiento-placeholder strong {
-  max-width: 260px;
-  font-family: 'NeulisAlt', sans-serif;
-  font-size: clamp(1.4rem, 2.3vw, 2.2rem);
-  line-height: 1.1;
-  overflow-wrap: anywhere;
-}
-
-.lanzamiento-play {
-  position: absolute;
-  right: 18px;
-  bottom: 18px;
-  display: grid;
-  place-items: center;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  color: #101820;
-  background: #64C5EB;
-  text-decoration: none;
-}
-
+/* Portada */
 .lanzamiento-info {
   padding: 23px;
+}
+
+.lanzamiento-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 .lanzamiento-tipo {
@@ -97,44 +53,45 @@
   letter-spacing: 1.5px;
 }
 
-.lanzamiento-info h3 {
-  margin: 12px 0;
-  font-size: 1.35rem;
-  line-height: 1.25;
+.lanzamiento-anio {
+  color: #7F909E;
+  font-size: 0.7rem;
 }
 
-.lanzamiento-info > p {
+.lanzamiento-descripcion {
   min-height: 48px;
+  margin: 16px 0;
   color: #A9B7C3;
   font-size: 0.8rem;
   line-height: 1.7;
 }
 
-.lanzamiento-links {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px;
-  margin-top: 20px;
-}
-
-.lanzamiento-links a {
+/* Spotify */
+.lanzamiento-spotify-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  margin-top: 14px;
   color: #FFFFFF;
   font-size: 0.72rem;
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-.lanzamiento-links a:hover {
+.lanzamiento-spotify-link:hover {
   color: #64C5EB;
 }
 
 .lanzamiento-pendiente {
+  display: inline-block;
+  margin-top: 18px;
   color: #7F909E;
-  font-size: 0.68rem;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
+
+/* Responsive */
 
 @media (max-width: 1050px) {
   .lanzamientos-section {
@@ -159,5 +116,19 @@
 
   .lanzamiento-info {
     padding: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lanzamiento-spotify-link {
+    transition: none;
+  }
+
+  .lanzamiento-card:hover {
+    transform: none;
+  }
+
+  .lanzamiento-card:hover > img {
+    transform: none;
   }
 }

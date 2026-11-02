@@ -4,7 +4,8 @@
   min-height: 680px;
   display: flex;
   align-items: center;
-  padding: 130px 9% 90px;
+  box-sizing: border-box;
+  padding: 125px 9% 110px;
   overflow: hidden;
   isolation: isolate;
   color: #FFFFFF;
@@ -14,23 +15,34 @@
 .musica-hero-glow {
   position: absolute;
   z-index: -1;
-  top: 5%;
-  right: -10%;
-  width: 650px;
-  height: 650px;
+  top: 0;
+  right: -8%;
+  width: 700px;
+  height: 700px;
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(23, 105, 170, 0.4) 0%,
+    rgba(23, 105, 170, 0.35) 0%,
     rgba(23, 105, 170, 0.12) 40%,
     transparent 70%
   );
   pointer-events: none;
 }
 
+.musica-hero-container {
+  width: 100%;
+  max-width: 1450px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  align-items: center;
+  gap: 65px;
+}
+
 .musica-hero-content {
   position: relative;
-  max-width: 760px;
+  z-index: 2;
+  animation: musicaHeroEntrance 0.9s ease both;
 }
 
 .musica-hero-content .eyebrow {
@@ -40,7 +52,7 @@
 .musica-hero h1 {
   margin: 24px 0;
   font-family: 'NeulisAlt', sans-serif;
-  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-size: clamp(3.5rem, 6.5vw, 6.5rem);
   font-weight: 800;
   line-height: 0.98;
   letter-spacing: -4px;
@@ -51,19 +63,115 @@
 }
 
 .musica-hero-content > p {
-  max-width: 480px;
+  max-width: 460px;
   color: #B8C5D0;
   font-size: 1rem;
   line-height: 1.9;
-  
 }
 
 .musica-hero-actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 14px;
   margin-top: 32px;
 }
+
+/* Imagen principal */
+
+.musica-hero-visual {
+  position: relative;
+  width: 65%;
+  max-width: 530px;
+  justify-self: end;
+  padding: 15px;
+  animation: musicaHeroImageEntrance 1s ease both;
+}
+
+.musica-hero-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #1A3347;
+  border-radius: 3px;
+}
+
+.musica-hero-image::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background: linear-gradient(
+    180deg,
+    transparent 55%,
+    rgba(16, 24, 32, 0.35)
+  );
+  pointer-events: none;
+}
+
+.musica-hero-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.7s ease;
+}
+
+.musica-hero-image:hover img {
+  transform: scale(1.04);
+}
+
+.musica-hero-visual::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 75%;
+  height: 75%;
+  content: '';
+  border-top: 1px solid rgba(100, 197, 235, 0.65);
+  border-right: 1px solid rgba(100, 197, 235, 0.65);
+  pointer-events: none;
+}
+
+.musica-hero-visual::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 35%;
+  height: 35%;
+  content: '';
+  border-bottom: 1px solid rgba(100, 197, 235, 0.4);
+  border-left: 1px solid rgba(100, 197, 235, 0.4);
+  pointer-events: none;
+}
+
+.musica-hero-image-label {
+  display: block;
+  margin-top: 14px;
+  color: #64C5EB;
+  font-size: 0.62rem;
+  letter-spacing: 2px;
+}
+
+.musica-hero-decoration {
+  position: absolute;
+  right: -20px;
+  bottom: 55px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: #FFFFFF;
+  font-size: 0.58rem;
+  letter-spacing: 1.5px;
+}
+
+.musica-hero-decoration span:first-child {
+  color: #64C5EB;
+  font-size: 1.2rem;
+}
+
+/* Indicador inferior */
 
 .musica-hero-index {
   position: absolute;
@@ -83,23 +191,120 @@
   color: #64C5EB;
 }
 
-@media (max-width: 760px) {
+/* Animaciones */
+
+@keyframes musicaHeroEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes musicaHeroImageEntrance {
+  from {
+    opacity: 0;
+    transform: translateX(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Tablets */
+
+@media (max-width: 1000px) {
   .musica-hero {
-    min-height: 600px;
-    padding: 120px 6% 100px;
+    padding-right: 6%;
+    padding-left: 6%;
+  }
+
+  .musica-hero-container {
+    gap: 35px;
   }
 
   .musica-hero h1 {
-    font-size: clamp(3rem, 12vw, 5rem);
+    font-size: clamp(3rem, 6vw, 5rem);
     letter-spacing: -2px;
+  }
+
+  .musica-hero-decoration {
+    right: -12px;
+  }
+}
+
+/* Móviles */
+
+@media (max-width: 760px) {
+  .musica-hero {
+    min-height: auto;
+    padding: 115px 6% 110px;
+  }
+
+  .musica-hero-container {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .musica-hero-content {
+    max-width: 600px;
+  }
+
+  .musica-hero h1 {
+    font-size: clamp(3rem, 11vw, 5rem);
   }
 
   .musica-hero-content > p {
     font-size: 0.88rem;
   }
 
+  .musica-hero-visual {
+    width: min(100%, 460px);
+    justify-self: center;
+  }
+
+  .musica-hero-image {
+    aspect-ratio: 4 / 4.5;
+  }
+
   .musica-hero-index {
     right: 6%;
     left: 6%;
+  }
+}
+
+@media (max-width: 480px) {
+  .musica-hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .musica-hero-actions .button {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .musica-hero-decoration {
+    right: -8px;
+    bottom: 45px;
+  }
+}
+
+/* Accesibilidad */
+
+@media (prefers-reduced-motion: reduce) {
+  .musica-hero-content,
+  .musica-hero-visual {
+    animation: none;
+  }
+
+  .musica-hero-image img {
+    transition: none;
   }
 }

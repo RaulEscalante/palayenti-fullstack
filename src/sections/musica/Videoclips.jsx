@@ -1,6 +1,7 @@
 
-import { ArrowUpRight, Play } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { videoclips } from './js/videoclipsData.js';
+import YouTubePlayer from '../../components/youtube/YouTubePlayer.jsx';
 import './css/Videoclips.css';
 
 export default function Videoclips() {
@@ -23,12 +24,12 @@ export default function Videoclips() {
       <div className="videoclips-grid">
         {videoclips.map((video) => (
           <article className="videoclip-card" key={video.id}>
-            <a className="videoclip-thumbnail" href={video.youtube || undefined} target={video.youtube ? '_blank' : undefined}
-              rel={video.youtube ? 'noreferrer' : undefined} aria-label={`Ver ${video.titulo}`} onClick={(event) => {
-                if (!video.youtube) event.preventDefault();
-              }}>
-              {video.miniatura ? (
-                <img src={video.miniatura} alt={video.titulo} />
+            <div className="videoclip-player">
+              {video.youtube ? (
+                <YouTubePlayer
+                  url={video.youtube}
+                  title={video.titulo}
+                />
               ) : (
                 <div className="videoclip-placeholder">
                   <span>PALAYENTI</span>
@@ -36,11 +37,7 @@ export default function Videoclips() {
                   <small>{video.anio}</small>
                 </div>
               )}
-
-              <span className="videoclip-play">
-                <Play size={23} fill="currentColor" />
-              </span>
-            </a>
+            </div>
 
             <div className="videoclip-info">
               <div>
@@ -50,8 +47,13 @@ export default function Videoclips() {
               </div>
 
               {video.youtube && (
-                <a className="videoclip-external" href={video.youtube} target="_blank"
-                  rel="noreferrer" aria-label={`Abrir ${video.titulo} en YouTube`}>
+                <a
+                  className="videoclip-external"
+                  href={video.youtube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Abrir ${video.titulo} en YouTube`}
+                >
                   <ArrowUpRight size={20} />
                 </a>
               )}

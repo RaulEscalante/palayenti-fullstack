@@ -23,28 +23,24 @@
   min-width: 0;
 }
 
-.videoclip-thumbnail {
+/* Reproductor de YouTube */
+.videoclip-player {
   position: relative;
-  display: block;
+  width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   color: #FFFFFF;
   background: #1A3347;
-  text-decoration: none;
 }
 
-.videoclip-thumbnail > img {
+.videoclip-player iframe {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.35s ease;
+  border: 0;
 }
 
-.videoclip-thumbnail:hover > img {
-  transform: scale(1.04);
-}
-
+/* Placeholder */
 .videoclip-placeholder {
   display: flex;
   flex-direction: column;
@@ -76,26 +72,7 @@
   line-height: 1.1;
 }
 
-.videoclip-play {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: grid;
-  place-items: center;
-  width: 58px;
-  height: 58px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 50%;
-  color: #101820;
-  background: #64C5EB;
-  transform: translate(-50%, -50%);
-  transition: transform 0.2s ease;
-}
-
-.videoclip-thumbnail:hover .videoclip-play {
-  transform: translate(-50%, -50%) scale(1.08);
-}
-
+/* Información del videoclip */
 .videoclip-info {
   display: flex;
   justify-content: space-between;
@@ -125,8 +102,14 @@
 .videoclip-external {
   flex-shrink: 0;
   color: #64C5EB;
+  transition: color 0.2s ease;
 }
 
+.videoclip-external:hover {
+  color: #FFFFFF;
+}
+
+/* Tablets */
 @media (max-width: 1050px) {
   .videoclips-section {
     padding-right: 6%;
@@ -134,6 +117,7 @@
   }
 }
 
+/* Móviles */
 @media (max-width: 600px) {
   .videoclips-section {
     padding: 72px 6%;
@@ -149,9 +133,9 @@
   }
 }
 
+/* Accesibilidad */
 @media (prefers-reduced-motion: reduce) {
-  .videoclip-thumbnail > img,
-  .videoclip-play {
+  .videoclip-external {
     transition: none;
   }
 }
