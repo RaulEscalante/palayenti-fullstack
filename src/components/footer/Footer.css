@@ -277,3 +277,75 @@
     transition: none;
   }
 }
+
+/* Botón flotante de volver arriba */
+.back-to-top-floating {
+  position: fixed;
+  z-index: 1000;
+  right: 28px;
+  bottom: 28px;
+
+  display: grid;
+  place-items: center;
+
+  width: 52px;
+  height: 52px;
+  padding: 0;
+
+  border: 1px solid #64C5EB;
+  border-radius: 50%;
+
+  color: #FFFFFF;
+  background: #1769AA;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+
+  animation: backToTopAppear 0.3s ease both;
+}
+
+.back-to-top-floating span {
+  display: none;
+}
+
+.back-to-top-floating svg {
+  width: 20px;
+  height: 20px;
+}
+
+.back-to-top-floating:hover {
+  color: #101820;
+  background: #64C5EB;
+  transform: translateY(-4px);
+}
+
+.back-to-top-floating:focus-visible {
+  outline: 2px solid #64C5EB;
+  outline-offset: 4px;
+}
+
+@keyframes backToTopAppear {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .back-to-top-floating {
+    right: 18px;
+    bottom: 18px;
+    width: 46px;
+    height: 46px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top-floating {
+    animation: none;
+  }
+}
