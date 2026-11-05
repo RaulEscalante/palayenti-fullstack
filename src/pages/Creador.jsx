@@ -1,17 +1,33 @@
 
 import CreadorHero from '../sections/creador/CreadorHero.jsx';
-import Contenidos from '../sections/creador/Contenidos.jsx';
-import Colaboraciones from '../sections/creador/Colaboraciones.jsx';
-import VideosCreador from '../sections/creador/VideosCreador.jsx';
+import NovedadesCreador from '../sections/creador/NovedadesCreador.jsx';
+import BibliotecaCreador from '../sections/creador/BibliotecaCreador.jsx';
 import CTAFinal from '../sections/cta/CTAFinal.jsx';
+import useContenidos from '../sections/creador/hooks/useContenidos.js';
 
 export default function Creador() {
+  const {
+    contenidos,
+    cargando,
+    error,
+    recargar,
+  } = useContenidos();
+
   return (
     <>
       <CreadorHero />
-      <Contenidos />
-      <Colaboraciones />
-      <VideosCreador />
+
+      <NovedadesCreador
+        contenidos={contenidos}
+        cargando={cargando}
+        error={error}
+        recargar={recargar}
+      />
+
+      <BibliotecaCreador
+        contenidos={contenidos}
+        cargando={cargando}
+      />
 
       <CTAFinal
         etiqueta="LAS BUENAS IDEAS SE COMPARTEN"

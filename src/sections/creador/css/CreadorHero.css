@@ -38,6 +38,14 @@
   line-height: 1.9;
 }
 
+.creador-hero-content > .reveal {
+  width: 100%;
+}
+
+.creador-hero > .reveal {
+  min-width: 0;
+}
+
 .creador-hero-actions {
   display: flex;
   flex-wrap: wrap;

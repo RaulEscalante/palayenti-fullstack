@@ -10,23 +10,23 @@ export const banda = {
 export const integrantes = [
   {
     id: 1,
-    nombre: 'Nombre del integrante',
-    rol: 'Voz principal',
-    descripcion: 'Una breve presentación del integrante.',
+    nombre: '',
+    rol: '',
+    descripcion: '',
     foto: '',
   },
   {
     id: 2,
-    nombre: 'Nombre del integrante',
-    rol: 'Guitarra',
-    descripcion: 'Una breve presentación del integrante.',
+    nombre: '',
+    rol: '',
+    descripcion: '',
     foto: '',
   },
   {
     id: 3,
-    nombre: 'Nombre del integrante',
-    rol: 'Bajo',
-    descripcion: 'Una breve presentación del integrante.',
+    nombre: '',
+    rol: '',
+    descripcion: '',
     foto: '',
   },
 ];

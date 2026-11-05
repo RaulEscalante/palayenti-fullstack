@@ -1,6 +1,7 @@
 
 import { ArrowUpRight, MessageCircle } from 'lucide-react';
 import { obtenerEnlaceWhatsApp } from '../../config/contacto.js';
+import Reveal from '../../components/reveal/Reveal.jsx';
 import './CTAFinal.css';
 
 export default function CTAFinal({
@@ -18,28 +19,36 @@ export default function CTAFinal({
       <div className="cta-final-orbit" />
 
       <div className="cta-final-content">
-        <span className="eyebrow">{etiqueta}</span>
+        <Reveal direction="up">
+          <span className="eyebrow">{etiqueta}</span>
+        </Reveal>
 
-        <h2>{titulo}</h2>
+        <Reveal direction="up" delay={100}>
+          <h2>{titulo}</h2>
+        </Reveal>
 
-        <p>{descripcion}</p>
+        <Reveal direction="up" delay={200}>
+          <p>{descripcion}</p>
+        </Reveal>
 
-        {enlaceWhatsApp ? (
-          <a
-            href={enlaceWhatsApp}
-            className="cta-final-button"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <MessageCircle size={18} />
-            {textoBoton}
-            <ArrowUpRight size={17} />
-          </a>
-        ) : (
-          <span className="cta-final-note">
-            Próximamente, nuestro canal de contacto.
-          </span>
-        )}
+        <Reveal direction="up" delay={300}>
+          {enlaceWhatsApp ? (
+            <a
+              href={enlaceWhatsApp}
+              className="cta-final-button"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <MessageCircle size={18} />
+              {textoBoton}
+              <ArrowUpRight size={17} />
+            </a>
+          ) : (
+            <span className="cta-final-note">
+              Próximamente, nuestro canal de contacto.
+            </span>
+          )}
+        </Reveal>
       </div>
 
       <span className="cta-final-index">PALAYENTI / CONECTEMOS</span>
