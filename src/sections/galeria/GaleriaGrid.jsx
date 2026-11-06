@@ -1,14 +1,7 @@
 
 import { useState } from 'react';
-import {
-  Music2,
-  Clapperboard,
-  Camera,
-  Mic2,
-  Headphones,
-  Sparkles,
-} from 'lucide-react';
-
+import { Music2, Clapperboard, Camera, Mic2, Headphones, Sparkles, } from 'lucide-react';
+import Reveal from '../../components/reveal/Reveal.jsx';
 import './css/GaleriaGrid.css';
 
 const filtros = [
@@ -81,6 +74,7 @@ const elementos = [
   },
 ];
 
+
 export default function GaleriaGrid() {
   const [filtroActivo, setFiltroActivo] = useState('todos');
 
@@ -93,76 +87,88 @@ export default function GaleriaGrid() {
     <section className="gallery-collection" id="galeria-grid">
       <div className="gallery-collection-heading">
         <div>
-          <span className="eyebrow">ARCHIVO VISUAL</span>
-          <h2>
+          <Reveal direction="left">
+            <span className="eyebrow">ARCHIVO VISUAL</span>
+          </Reveal>
+
+          <Reveal as="h2" direction="left" delay={100}>
             Cada imagen,
             <br />
             <span>una historia.</span>
-          </h2>
+          </Reveal>
         </div>
 
-        <p>
-          Explora diferentes facetas del universo PALAYENTI.
-          Cada categoría representa una parte del camino.
-        </p>
+        <Reveal direction="right" delay={150}>
+          <p>
+            Explora diferentes facetas del universo PALAYENTI.
+            Cada categoría representa una parte del camino.
+          </p>
+        </Reveal>
       </div>
 
-      <div className="gallery-filters" aria-label="Filtrar galería">
-        {filtros.map((filtro) => (
-          <button
-            key={filtro.value}
-            type="button"
-            className={`gallery-filter ${
-              filtroActivo === filtro.value ? 'is-active' : ''
-            }`}
-            onClick={() => setFiltroActivo(filtro.value)}
-            aria-pressed={filtroActivo === filtro.value}
-          >
-            {filtro.label}
-          </button>
-        ))}
-      </div>
+      <Reveal direction="up" delay={200}>
+        <div className="gallery-filters" aria-label="Filtrar galería">
+          {filtros.map((filtro) => (
+            <button
+              key={filtro.value}
+              type="button"
+              className={`gallery-filter ${filtroActivo === filtro.value ? 'is-active' : ''
+                }`}
+              onClick={() => setFiltroActivo(filtro.value)}
+              aria-pressed={filtroActivo === filtro.value}
+            >
+              {filtro.label}
+            </button>
+          ))}
+        </div>
+      </Reveal>
 
       <div className="gallery-collection-grid" aria-live="polite">
-        {elementosFiltrados.map((elemento) => {
+        {elementosFiltrados.map((elemento, index) => {
           const Icono = elemento.icono;
 
           return (
-            <article
-              className="gallery-collection-card"
-              key={elemento.id}
+            <Reveal
+              key={`${filtroActivo}-${elemento.id}`}
+              direction="up"
+              delay={index * 100}
+              className="gallery-card-reveal"
             >
-              <div className={`gallery-collection-art ${elemento.estilo}`}>
-                <span className="gallery-collection-number">
-                  {elemento.numero}
-                </span>
+              <article className="gallery-collection-card">
+                <div className={`gallery-collection-art ${elemento.estilo}`}>
+                  <span className="gallery-collection-number">
+                    {elemento.numero}
+                  </span>
 
-                <div className="gallery-collection-symbol">
-                  <Icono size={35} strokeWidth={1.3} />
+                  <div className="gallery-collection-symbol">
+                    <Icono size={35} strokeWidth={1.3} />
+                  </div>
+
+                  <span className="gallery-collection-brand">
+                    PALAYENTI
+                  </span>
                 </div>
 
-                <span className="gallery-collection-brand">
-                  PALAYENTI
-                </span>
-              </div>
+                <div className="gallery-collection-info">
+                  <span className="gallery-collection-category">
+                    {elemento.categoriaTexto}
+                  </span>
 
-              <div className="gallery-collection-info">
-                <span className="gallery-collection-category">
-                  {elemento.categoriaTexto}
-                </span>
-
-                <h3>{elemento.titulo}</h3>
-                <p>{elemento.descripcion}</p>
-              </div>
-            </article>
+                  <h3>{elemento.titulo}</h3>
+                  <p>{elemento.descripcion}</p>
+                </div>
+              </article>
+            </Reveal>
           );
         })}
       </div>
 
-      <p className="gallery-collection-note">
-        <span />
-        GALERÍA EN CONSTRUCCIÓN · NUEVOS MOMENTOS PRÓXIMAMENTE
-      </p>
+      <Reveal direction="up" delay={200}>
+        <p className="gallery-collection-note">
+          <span />
+          GALERÍA EN CONSTRUCCIÓN · NUEVOS MOMENTOS PRÓXIMAMENTE
+        </p>
+      </Reveal>
     </section>
   );
 }

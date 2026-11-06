@@ -217,6 +217,13 @@
   background: #1769aa;
 }
 
+/* Contenedores de las tarjetas animadas */
+.gallery-card-reveal {
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+
 @media (max-width: 1050px) {
   .gallery-collection {
     padding-right: 6%;

@@ -120,6 +120,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .lanzamiento-card,
   .lanzamiento-spotify-link {
     transition: none;
   }
@@ -127,8 +128,11 @@
   .lanzamiento-card:hover {
     transform: none;
   }
+}
 
-  .lanzamiento-card:hover > img {
-    transform: none;
-  }
+/* Integración con Reveal */
+.lanzamiento-reveal {
+  display: block;
+  width: 100%;
+  min-width: 0;
 }

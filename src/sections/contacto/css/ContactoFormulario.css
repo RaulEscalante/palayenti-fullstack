@@ -273,6 +273,17 @@
   letter-spacing: 0.7px;
 }
 
+/* Contenedores de las animaciones */
+.contact-form-reveal {
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+
+.contact-information > .reveal {
+  width: 100%;
+}
+
 @media (max-width: 1000px) {
   .contact-section {
     padding-right: 6%;

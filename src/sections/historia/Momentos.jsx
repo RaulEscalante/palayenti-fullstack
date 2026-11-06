@@ -1,5 +1,6 @@
 
 import { ArrowUpRight, Camera, Clapperboard, Music2 } from 'lucide-react';
+import Reveal from '../../components/reveal/Reveal.jsx';
 import './css/Momentos.css';
 
 const momentos = [
@@ -37,51 +38,65 @@ export default function Momentos() {
     <section className="moments-section" id="momentos">
       <div className="moments-heading">
         <div>
-          <span className="eyebrow">FRAGMENTOS DEL CAMINO</span>
-          <h2>
+          <Reveal direction="left">
+            <span className="eyebrow">FRAGMENTOS DEL CAMINO</span>
+          </Reveal>
+
+          <Reveal as="h2" direction="left" delay={100}>
             Momentos que
             <br />
             <span>forman parte de mí.</span>
-          </h2>
+          </Reveal>
         </div>
 
-        <p>
-          Detrás de cada canción y cada contenido hay ideas,
-          experiencias y personas que hacen que el camino tenga
-          sentido. Aquí habrá espacio para compartir esos momentos.
-        </p>
+        <Reveal direction="right" delay={150}>
+          <p>
+            Detrás de cada canción y cada contenido hay ideas,
+            experiencias y personas que hacen que el camino tenga
+            sentido. Aquí habrá espacio para compartir esos momentos.
+          </p>
+        </Reveal>
       </div>
 
       <div className="moments-grid">
-        {momentos.map(({ numero, categoria, titulo, descripcion, clase, Icono }) => (
-          <article className={`moment-card ${clase}`} key={numero}>
-            <div className="moment-artwork">
-              <span className="moment-number">{numero}</span>
+        {momentos.map(({ numero, categoria, titulo, descripcion, clase, Icono }, index) => (
+          <Reveal
+            key={numero}
+            direction="up"
+            delay={index * 120}
+            className="moment-card-reveal"
+          >
+            <article className={`moment-card ${clase}`}>
+              <div className="moment-artwork">
+                <span className="moment-number">{numero}</span>
 
-              <div className="moment-artwork-shape">
-                <Icono size={38} strokeWidth={1.2} />
+                <div className="moment-artwork-shape">
+                  <Icono size={38} strokeWidth={1.2} />
+                </div>
+
+                <span className="moment-artwork-label">PALAYENTI</span>
               </div>
 
-              <span className="moment-artwork-label">PALAYENTI</span>
-            </div>
-
-            <div className="moment-card-content">
-              <span className="moment-category">{categoria}</span>
-              <h3>{titulo}</h3>
-              <p>{descripcion}</p>
-              <span className="moment-card-bottom">
-                <span>UN MOMENTO DEL CAMINO</span>
-                <ArrowUpRight size={16} />
-              </span>
-            </div>
-          </article>
+              <div className="moment-card-content">
+                <span className="moment-category">{categoria}</span>
+                <h3>{titulo}</h3>
+                <p>{descripcion}</p>
+                <span className="moment-card-bottom">
+                  <span>UN MOMENTO DEL CAMINO</span>
+                  <ArrowUpRight size={16} />
+                </span>
+              </div>
+            </article>
+          </Reveal>
         ))}
       </div>
 
-      <div className="moments-note">
-        <span className="moments-note-dot" />
-        <p>ESTE ESPACIO CRECERÁ CON NUEVAS HISTORIAS Y EXPERIENCIAS.</p>
-      </div>
+      <Reveal direction="up" delay={200}>
+        <div className="moments-note">
+          <span className="moments-note-dot" />
+          <p>ESTE ESPACIO CRECERÁ CON NUEVAS HISTORIAS Y EXPERIENCIAS.</p>
+        </div>
+      </Reveal>
     </section>
   );
 }

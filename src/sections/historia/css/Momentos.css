@@ -283,3 +283,16 @@
     transition: none;
   }
 }
+
+/* Contenedor de las animaciones de las tarjetas */
+.moment-card-reveal {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+}
+
+.moment-card-reveal .moment-card {
+  height: 100%;
+  box-sizing: border-box;
+}

@@ -190,3 +190,15 @@
     transition: none;
   }
 }
+
+/* Integración con Reveal */
+.trajectory-card-reveal {
+  display: block;
+  min-width: 0;
+  height: 100%;
+}
+
+.trajectory-card-reveal .trajectory-card {
+  height: 100%;
+  box-sizing: border-box;
+}

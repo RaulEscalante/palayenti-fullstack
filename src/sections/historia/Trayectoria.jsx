@@ -1,5 +1,6 @@
 
 import { ArrowUpRight, Music2, Lightbulb, Mic2 } from 'lucide-react';
+import Reveal from '../../components/reveal/Reveal.jsx';
 import './css/Trayectoria.css';
 
 const pilares = [
@@ -31,46 +32,60 @@ export default function Trayectoria() {
     <section className="trajectory-section" id="trayectoria">
       <div className="trajectory-heading">
         <div>
-          <span className="eyebrow">EL CAMINO RECORRIDO</span>
-          <h2>
+          <Reveal direction="left">
+            <span className="eyebrow">EL CAMINO RECORRIDO</span>
+          </Reveal>
+
+          <Reveal as="h2" direction="left" delay={100}>
             Más que un nombre,
             <br />
             <span>una forma de expresarme.</span>
-          </h2>
+          </Reveal>
         </div>
 
-        <p>
-          PALAYENTI reúne distintas formas de expresión bajo una misma
-          identidad. La música y la creación de contenido son parte de
-          un camino que sigue creciendo y encontrando nuevas maneras de
-          compartir.
-        </p>
+        <Reveal direction="right" delay={150}>
+          <p>
+            PALAYENTI reúne distintas formas de expresión bajo una misma
+            identidad. La música y la creación de contenido son parte de
+            un camino que sigue creciendo y encontrando nuevas maneras de
+            compartir.
+          </p>
+        </Reveal>
       </div>
 
       <div className="trajectory-grid">
-        {pilares.map((pilar) => {
+        {pilares.map((pilar, index) => {
           const Icono = pilar.icono;
 
           return (
-            <article className="trajectory-card" key={pilar.numero}>
-              <div className="trajectory-card-top">
-                <span>{pilar.numero}</span>
-                <Icono size={23} strokeWidth={1.5} />
-              </div>
+            <Reveal
+              key={pilar.numero}
+              direction="up"
+              delay={index * 120}
+              className="trajectory-card-reveal"
+            >
+              <article className="trajectory-card">
+                <div className="trajectory-card-top">
+                  <span>{pilar.numero}</span>
+                  <Icono size={23} strokeWidth={1.5} />
+                </div>
 
-              <h3>{pilar.titulo}</h3>
-              <p>{pilar.descripcion}</p>
+                <h3>{pilar.titulo}</h3>
+                <p>{pilar.descripcion}</p>
 
-              <span className="trajectory-card-line" />
-            </article>
+                <span className="trajectory-card-line" />
+              </article>
+            </Reveal>
           );
         })}
       </div>
 
-      <a className="trajectory-link" href="#momentos">
-        DESCUBRE OTROS MOMENTOS
-        <ArrowUpRight size={16} />
-      </a>
+      <Reveal direction="up" delay={200}>
+        <a className="trajectory-link" href="#momentos">
+          DESCUBRE OTROS MOMENTOS
+          <ArrowUpRight size={16} />
+        </a>
+      </Reveal>
     </section>
   );
 }

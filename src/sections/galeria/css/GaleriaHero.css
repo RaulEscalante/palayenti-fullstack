@@ -294,3 +294,12 @@
     transition: none;
   }
 }
+
+/* Ajustes para los contenedores Reveal */
+.gallery-hero-content > .reveal {
+  width: 100%;
+}
+
+.gallery-hero > .reveal {
+  min-width: 0;
+}

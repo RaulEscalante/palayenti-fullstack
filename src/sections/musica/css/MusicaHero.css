@@ -42,7 +42,6 @@
 .musica-hero-content {
   position: relative;
   z-index: 2;
-  animation: musicaHeroEntrance 0.9s ease both;
 }
 
 .musica-hero-content .eyebrow {
@@ -78,14 +77,12 @@
 }
 
 /* Imagen principal */
-
 .musica-hero-visual {
   position: relative;
   width: 65%;
   max-width: 530px;
   justify-self: end;
   padding: 15px;
-  animation: musicaHeroImageEntrance 1s ease both;
 }
 
 .musica-hero-image {
@@ -191,34 +188,8 @@
   color: #64C5EB;
 }
 
-/* Animaciones */
-
-@keyframes musicaHeroEntrance {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes musicaHeroImageEntrance {
-  from {
-    opacity: 0;
-    transform: translateX(25px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
 
 /* Tablets */
-
 @media (max-width: 1000px) {
   .musica-hero {
     padding-right: 6%;
@@ -297,14 +268,16 @@
 }
 
 /* Accesibilidad */
-
 @media (prefers-reduced-motion: reduce) {
-  .musica-hero-content,
-  .musica-hero-visual {
-    animation: none;
-  }
-
   .musica-hero-image img {
     transition: none;
   }
+}
+
+.musica-hero-content > .reveal {
+  width: 100%;
+}
+
+.musica-hero-container > .reveal {
+  min-width: 0;
 }

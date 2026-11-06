@@ -4,6 +4,7 @@ import { Send, Mail, MessageCircle, ArrowUpRight, } from 'lucide-react';
 import { siInstagram, siYoutube, siTiktok } from 'simple-icons';
 
 import { obtenerEnlaceWhatsApp } from '../../config/contacto.js';
+import Reveal from '../../components/reveal/Reveal.jsx';
 import './css/ContactoFormulario.css';
 
 const motivos = [
@@ -74,149 +75,203 @@ export default function ContactoFormulario() {
     'Hola PALAYENTI, quisiera ponerme en contacto para realizar una consulta.'
   );
 
+
   return (
     <section className="contact-section" id="contacto-formulario">
       <div className="contact-section-heading">
         <div>
-          <span className="eyebrow">ESTAMOS EN CONTACTO</span>
-          <h2>
+          <Reveal direction="left">
+            <span className="eyebrow">ESTAMOS EN CONTACTO</span>
+          </Reveal>
+
+          <Reveal as="h2" direction="left" delay={100}>
             Cuéntame tu
             <br />
             <span>idea o propuesta.</span>
-          </h2>
+          </Reveal>
         </div>
 
-        <p>
-          Completa el formulario con tus datos y el motivo de tu
-          consulta. Revisaré tu mensaje para continuar la conversación.
-        </p>
+        <Reveal direction="right" delay={150}>
+          <p>
+            Completa el formulario con tus datos y el motivo de tu
+            consulta. Revisaré tu mensaje para continuar la conversación.
+          </p>
+        </Reveal>
       </div>
 
       <div className="contact-section-layout">
-        <form className="contact-form" onSubmit={enviarFormulario}>
-          <div className="contact-form-heading">
-            <span>01 / TU MENSAJE</span>
-            <h3>Hablemos de lo que tienes en mente.</h3>
-          </div>
+        <Reveal direction="up" className="contact-form-reveal">
+          <form className="contact-form" onSubmit={enviarFormulario}>
+            <div className="contact-form-heading">
+              <span>01 / TU MENSAJE</span>
+              <h3>Hablemos de lo que tienes en mente.</h3>
+            </div>
 
-          <div className="contact-form-row">
+            <div className="contact-form-row">
+              <label>
+                NOMBRE COMPLETO
+                <input
+                  type="text"
+                  name="nombre"
+                  placeholder="¿Cómo te llamas?"
+                  value={formulario.nombre}
+                  onChange={actualizarCampo}
+                  required
+                />
+              </label>
+
+              <label>
+                CORREO ELECTRÓNICO
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="tucorreo@ejemplo.com"
+                  value={formulario.email}
+                  onChange={actualizarCampo}
+                  required
+                />
+              </label>
+            </div>
+
             <label>
-              NOMBRE COMPLETO
-              <input type="text" name="nombre" placeholder="¿Cómo te llamas?"
-                value={formulario.nombre} onChange={actualizarCampo} required />
+              MOTIVO DE CONTACTO
+              <select
+                name="motivo"
+                value={formulario.motivo}
+                onChange={actualizarCampo}
+                required
+              >
+                {motivos.map((motivo) => (
+                  <option key={motivo} value={motivo}>
+                    {motivo}
+                  </option>
+                ))}
+              </select>
             </label>
 
             <label>
-              CORREO ELECTRÓNICO
-              <input type="email" name="email" placeholder="tucorreo@ejemplo.com"
-                value={formulario.email} onChange={actualizarCampo} required />
+              MENSAJE
+              <textarea
+                name="mensaje"
+                placeholder="Cuéntame un poco más sobre tu propuesta..."
+                rows="5"
+                value={formulario.mensaje}
+                onChange={actualizarCampo}
+                required
+              />
             </label>
-          </div>
 
-          <label>
-            MOTIVO DE CONTACTO
-            <select name="motivo" value={formulario.motivo} onChange={actualizarCampo} required>
-              {motivos.map((motivo) => (
-                <option key={motivo} value={motivo}>
-                  {motivo}
-                </option>
-              ))}
-            </select>
-          </label>
+            <button type="submit" className="contact-form-submit">
+              PREPARAR CORREO
+              <Send size={16} />
+            </button>
 
-          <label>
-            MENSAJE
-            <textarea name="mensaje" placeholder="Cuéntame un poco más sobre tu propuesta..." rows="5"
-              value={formulario.mensaje} onChange={actualizarCampo} required />
-          </label>
-
-          <button type="submit" className="contact-form-submit">
-            PREPARAR CORREO
-            <Send size={16} />
-          </button>
-
-          <p className="contact-form-disclaimer">
-            Al enviar, se abrirá tu aplicación de correo para completar
-            el envío del mensaje.
-          </p>
-        </form>
+            <p className="contact-form-disclaimer">
+              Al enviar, se abrirá tu aplicación de correo para completar
+              el envío del mensaje.
+            </p>
+          </form>
+        </Reveal>
 
         <aside className="contact-information">
-          <div className="contact-information-block">
-            <span className="contact-information-index">02 / CONECTEMOS</span>
-            <h3>También puedes encontrarme por aquí.</h3>
-
-            <a
-              href="mailto:contacto@palayenti.com"
-              className="contact-information-link"
-            >
-              <span className="contact-information-icon">
-                <Mail size={19} />
+          <Reveal direction="right" delay={150}>
+            <div className="contact-information-block">
+              <span className="contact-information-index">
+                02 / CONECTEMOS
               </span>
-              <span>
-                <small>CORREO ELECTRÓNICO</small>
-                <strong>contacto@palayenti.com</strong>
-              </span>
-              <ArrowUpRight size={17} />
-            </a>
+              <h3>También puedes encontrarme por aquí.</h3>
 
-            {enlaceWhatsApp && (
-              <a href={enlaceWhatsApp} target="_blank" rel="noreferrer" className="contact-information-link" >
+              <a
+                href="mailto:contacto@palayenti.com"
+                className="contact-information-link"
+              >
                 <span className="contact-information-icon">
-                  <MessageCircle size={19} />
+                  <Mail size={19} />
                 </span>
                 <span>
-                  <small>WHATSAPP</small>
-                  <strong>Iniciar una conversación</strong>
+                  <small>CORREO ELECTRÓNICO</small>
+                  <strong>contacto@palayenti.com</strong>
                 </span>
                 <ArrowUpRight size={17} />
               </a>
-            )}
-          </div>
 
-          <div className="contact-information-block contact-social-block">
-            <span className="contact-information-index">03 / REDES SOCIALES</span>
-            <h3>Sigamos conectados.</h3>
-
-            <div className="contact-social-list">
-              {redes.map((red) => {
-                const Icono = red.icono;
-
-                return (
-                  <div className="contact-social-item" key={red.nombre}>
-                    <span className="contact-social-icon">
-                      {Icono ? (
-                        <svg viewBox="0 0 24 24" width="19" height="19"
-                          fill="currentColor" aria-hidden="true">
-                          <path d={Icono.path} />
-                        </svg>
-                      ) : (
-                        red.nombre.charAt(0)
-                      )}
-                    </span>
-
-                    <span>
-                      <strong>{red.nombre}</strong>
-                      <small>{red.descripcion}</small>
-                    </span>
-
-                    {red.url ? (
-                      <a href={red.url} target="_blank"
-                        rel="noreferrer" aria-label={`Visitar ${red.nombre}`} >
-                        <ArrowUpRight size={17} />
-                      </a>
-                    ) : (
-                      <span className="contact-social-pending">
-                        PRÓXIMAMENTE
-                      </span>
-                    )}
-                  </div>
-                );
-              })}
+              {enlaceWhatsApp && (
+                <a
+                  href={enlaceWhatsApp}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="contact-information-link"
+                >
+                  <span className="contact-information-icon">
+                    <MessageCircle size={19} />
+                  </span>
+                  <span>
+                    <small>WHATSAPP</small>
+                    <strong>Iniciar una conversación</strong>
+                  </span>
+                  <ArrowUpRight size={17} />
+                </a>
+              )}
             </div>
-          </div>
+          </Reveal>
+
+          <Reveal direction="right" delay={250}>
+            <div className="contact-information-block contact-social-block">
+              <span className="contact-information-index">
+                03 / REDES SOCIALES
+              </span>
+              <h3>Sigamos conectados.</h3>
+
+              <div className="contact-social-list">
+                {redes.map((red) => {
+                  const Icono = red.icono;
+
+                  return (
+                    <div className="contact-social-item" key={red.nombre}>
+                      <span className="contact-social-icon">
+                        {Icono ? (
+                          <svg
+                            viewBox="0 0 24 24"
+                            width="19"
+                            height="19"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path d={Icono.path} />
+                          </svg>
+                        ) : (
+                          red.nombre.charAt(0)
+                        )}
+                      </span>
+
+                      <span>
+                        <strong>{red.nombre}</strong>
+                        <small>{red.descripcion}</small>
+                      </span>
+
+                      {red.url ? (
+                        <a
+                          href={red.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`Visitar ${red.nombre}`}
+                        >
+                          <ArrowUpRight size={17} />
+                        </a>
+                      ) : (
+                        <span className="contact-social-pending">
+                          PRÓXIMAMENTE
+                        </span>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </Reveal>
         </aside>
       </div>
     </section>
   );
+
 }

@@ -1,9 +1,7 @@
 import MusicaHero from '../sections/musica/MusicaHero.jsx';
 import Lanzamientos from '../sections/musica/Lanzamientos.jsx';
 import Videoclips from '../sections/musica/Videoclips.jsx';
-import Banda from '../sections/musica/Banda.jsx';
 import CTAFinal from '../sections/cta/CTAFinal.jsx';
-
 
 export default function Musica() {
   return (
@@ -11,7 +9,6 @@ export default function Musica() {
       <MusicaHero />
       <Lanzamientos />
       <Videoclips />
-      <Banda />
       <CTAFinal
         etiqueta="¿TIENES UN EVENTO EN MENTE?"
         titulo="LLEVEMOS LA MÚSICA A TU EVENTO."
