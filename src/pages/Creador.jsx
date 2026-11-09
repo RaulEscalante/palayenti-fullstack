@@ -17,17 +17,8 @@ export default function Creador() {
     <>
       <CreadorHero />
 
-      <NovedadesCreador
-        contenidos={contenidos}
-        cargando={cargando}
-        error={error}
-        recargar={recargar}
-      />
-
-      <BibliotecaCreador
-        contenidos={contenidos}
-        cargando={cargando}
-      />
+      <NovedadesCreador contenidos={contenidos} cargando={cargando} error={error} recargar={recargar} />
+      <BibliotecaCreador contenidos={contenidos} cargando={cargando} />
 
       <CTAFinal
         etiqueta="LAS BUENAS IDEAS SE COMPARTEN"

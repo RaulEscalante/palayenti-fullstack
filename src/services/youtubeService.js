@@ -1,7 +1,7 @@
 
 const YOUTUBE_WORKER_URL = import.meta.env.VITE_YOUTUBE_WORKER_URL;
 
-export async function obtenerEntrevistas({ signal } = {}) {
+export async function obtenerVideosYoutube({ signal } = {}) {
   if (!YOUTUBE_WORKER_URL) {
     throw new Error(
       'No se ha configurado la URL del servicio de YouTube.'

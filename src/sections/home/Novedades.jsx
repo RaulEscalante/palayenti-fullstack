@@ -10,9 +10,17 @@ import './css/Novedades.css';
 
 export default function Novedades() {
   const { contenidos, cargando, error, recargar, } = useContenidos();
+  // Última entrevista para la tarjeta Creador
+  const ultimaEntrevista = contenidos.find(
+    (contenido) => contenido.categoria === 'ENTREVISTAS'
+  );
 
-  const ultimaEntrevista = contenidos.find((contenido) => contenido.fuente === 'YOUTUBE');
-  const [videoActivo, setVideoActivo] = useState(false);
+  // Último videoclip para la tarjeta Música
+  const ultimoVideoclip = contenidos.find(
+    (contenido) => contenido.categoria === 'MUSICA'
+  );
+  const [videoMusicaActivo, setVideoMusicaActivo] = useState(false);
+  const [videoCreadorActivo, setVideoCreadorActivo] = useState(false);
 
 
   return (
@@ -23,31 +31,72 @@ export default function Novedades() {
         <Reveal delay={100}>
           <article className="news-feature" id="musica">
             <div className="news-artwork">
-              <div className="artwork-circle artwork-circle-one" />
-              <div className="artwork-circle artwork-circle-two" />
+              {ultimoVideoclip && videoMusicaActivo ? (
+                <div className="news-video-player">
+                  <ReproductorYoutube
+                    videoId={ultimoVideoclip.youtubeId}
+                    titulo={ultimoVideoclip.titulo}
+                    onCerrar={() => setVideoMusicaActivo(false)}
+                  />
+                </div>
+              ) : ultimoVideoclip ? (
+                <button
+                  type="button"
+                  className="news-video-preview"
+                  onClick={() => setVideoMusicaActivo(true)}
+                  aria-label={`Reproducir ${ultimoVideoclip.titulo}`}
+                >
+                  <img
+                    src={ultimoVideoclip.miniatura}
+                    alt=""
+                    className="news-video-thumbnail"
+                  />
 
-              <div className="artwork-center">
-                <Headphones size={48} strokeWidth={1} />
-                <span>NUEVO SONIDO</span>
-              </div>
+                  <span className="news-video-play">
+                    <Play size={36} fill="currentColor" />
+                  </span>
+                </button>
+              ) : (
+                <div className="video-frame">
+                  <div className="video-frame-inner">
+                    <Headphones size={48} strokeWidth={1} />
+                  </div>
+                  <span>
+                    {cargando ? 'CARGANDO MÚSICA' : 'PRÓXIMAMENTE'}
+                  </span>
+                </div>
+              )}
 
               <span className="artwork-label">MÚSICA / 001</span>
 
               <span className="artwork-caption">
-                PORTADA PROVISIONAL
+                {cargando
+                  ? 'CARGANDO CONTENIDO'
+                  : error
+                    ? 'CONTENIDO NO DISPONIBLE'
+                    : ultimoVideoclip
+                      ? videoMusicaActivo
+                        ? 'REPRODUCIENDO'
+                        : 'ÚLTIMO VIDEOCLIP'
+                      : 'PRÓXIMAMENTE'}
               </span>
             </div>
 
             <div className="news-info">
               <span className="content-category">
-                ÚLTIMO LANZAMIENTO
+                {ultimoVideoclip?.categoria || 'MÚSICA'}
               </span>
 
-              <h3>Una nueva historia <br />en cada canción.</h3>
+              <h3>
+                {ultimoVideoclip
+                  ? ultimoVideoclip.titulo
+                  : 'Una nueva historia en cada canción.'}
+              </h3>
 
               <p>
-                Descubre el universo musical de Palayenti. Aquí destacaremos
-                el último lanzamiento y su enlace oficial.
+                {ultimoVideoclip
+                  ? 'Descubre el último videoclip del universo musical de Palayenti.'
+                  : 'Descubre el universo musical de Palayenti y sus próximos lanzamientos.'}
               </p>
 
               <Link className="text-link" to="/musica">
@@ -62,16 +111,16 @@ export default function Novedades() {
           <article className="news-feature creator-news" id="creador">
 
             <div className="news-artwork creator-artwork">
-              {ultimaEntrevista && videoActivo ? (
+              {ultimaEntrevista && videoCreadorActivo ? (
                 <div className="news-video-player">
-                  <ReproductorYoutube videoId={ultimaEntrevista.youtubeId} 
-                  titulo={ultimaEntrevista.titulo} onCerrar={() => setVideoActivo(false)} />
+                  <ReproductorYoutube videoId={ultimaEntrevista.youtubeId} titulo={ultimaEntrevista.titulo}
+                    onCerrar={() => setVideoCreadorActivo(false)} />
                 </div>
               ) : ultimaEntrevista ? (
                 <button
                   type="button"
                   className="news-video-preview"
-                  onClick={() => setVideoActivo(true)}
+                  onClick={() => setVideoCreadorActivo(true)}
                   aria-label={`Reproducir ${ultimaEntrevista.titulo}`}
                 >
                   <img
@@ -101,7 +150,7 @@ export default function Novedades() {
                   : error
                     ? 'CONTENIDO NO DISPONIBLE'
                     : ultimaEntrevista
-                      ? videoActivo
+                      ? videoCreadorActivo
                         ? 'REPRODUCIENDO'
                         : 'ÚLTIMA ENTREVISTA'
                       : 'PRÓXIMAMENTE'}
