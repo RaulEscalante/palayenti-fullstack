@@ -1,8 +1,6 @@
-
 /* ========================================
    SECCIÓN NOVEDADES
 ======================================== */
-
 .news-section {
   color: white;
   background: #101820;
@@ -15,7 +13,6 @@
 /* ========================================
    DISTRIBUCIÓN
 ======================================== */
-
 .news-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -30,48 +27,37 @@
 /* ========================================
    PORTADAS
 ======================================== */
-
 .news-artwork {
   position: relative;
-
   display: grid;
   place-items: center;
-
   min-width: 0;
   min-height: 280px;
   overflow: hidden;
-
   background:
-    radial-gradient(
-      circle at 50% 50%,
+    radial-gradient(circle at 50% 50%,
       rgba(100, 197, 235, 0.2),
-      transparent 38%
-    ),
+      transparent 38%),
     linear-gradient(140deg, #1B3B54, #101820);
 }
 
 .creator-artwork {
   background:
-    radial-gradient(
-      circle at 70% 25%,
+    radial-gradient(circle at 70% 25%,
       rgba(100, 197, 235, 0.25),
-      transparent 35%
-    ),
+      transparent 35%),
     linear-gradient(140deg, #1B3445, #101820);
 }
 
 /* ========================================
    ELEMENTOS GRÁFICOS MUSICALES
 ======================================== */
-
 .artwork-circle {
   position: absolute;
-
   width: 220px;
   height: 220px;
   max-width: 85%;
   max-height: 85%;
-
   border: 1px solid rgba(100, 197, 235, 0.55);
   border-radius: 50%;
 }
@@ -79,9 +65,7 @@
 .artwork-circle-two {
   width: 170px;
   height: 170px;
-
   border-style: dashed;
-
   animation: slow-spin 35s linear infinite;
 }
 
@@ -93,20 +77,17 @@
 
 .artwork-center {
   z-index: 1;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
-
   max-width: 90%;
-
   color: var(--color-accent);
   text-align: center;
 }
 
 .artwork-center span,
-.video-frame > span {
+.video-frame>span {
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 2px;
@@ -117,21 +98,17 @@
 /* ========================================
    ELEMENTOS GRÁFICOS DEL CREADOR
 ======================================== */
-
 .video-frame {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 14px;
-
   width: 55%;
   max-width: 360px;
   min-width: 0;
   aspect-ratio: 16 / 9;
-
   border: 1px solid rgba(100, 197, 235, 0.55);
-
   color: var(--color-accent);
   background: rgba(16, 24, 32, 0.55);
 }
@@ -139,18 +116,130 @@
 .video-frame-inner {
   display: grid;
   place-items: center;
-
   width: 55px;
   height: 55px;
-
   border: 1px solid var(--color-accent);
   border-radius: 50%;
+}
+
+
+/* VISTA PREVIA DEL VIDEO */
+.news-video-preview {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  cursor: pointer;
+  background: #101820;
+}
+
+/* MINIATURA */
+.news-video-thumbnail {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.news-video-preview:hover .news-video-thumbnail {
+  transform: scale(1.05);
+}
+
+/* BOTÓN DE REPRODUCCIÓN */
+.news-video-play {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+
+  display: grid;
+  place-items: center;
+
+  width: 64px;
+  height: 64px;
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+
+  color: white;
+  background: rgba(16, 24, 32, 0.8);
+
+  transform: translate(-50%, -50%);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.news-video-preview:hover .news-video-play {
+  background: #1769AA;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.news-video-preview:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: -3px;
+}
+
+/* REPRODUCTOR DE YOUTUBE */
+.news-video-player {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.news-video-player .reproductor-youtube {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.news-video-player .reproductor-youtube iframe {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.news-video-player .reproductor-youtube-cerrar {
+  position: absolute;
+  z-index: 3;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  color: white;
+  background: rgba(16, 24, 32, 0.9);
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.news-video-player .reproductor-youtube-cerrar:hover {
+  background: #1769AA;
+  transform: scale(1.08);
+}
+
+.news-video-player .reproductor-youtube-cerrar:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
 }
 
 /* ========================================
    ETIQUETAS DE PORTADA
 ======================================== */
-
 .artwork-label,
 .artwork-caption {
   position: absolute;
@@ -176,7 +265,6 @@
 /* ========================================
    INFORMACIÓN
 ======================================== */
-
 .news-info {
   padding-top: 25px;
 }
@@ -190,18 +278,15 @@
 
 .news-info h3 {
   margin: 14px 0;
-
   font-family: 'NeulisAlt', sans-serif;
   font-size: clamp(1.7rem, 2.6vw, 2.4rem);
   line-height: 1.15;
   letter-spacing: -1px;
-
   overflow-wrap: anywhere;
 }
 
-.news-info > p {
+.news-info>p {
   max-width: 420px;
-
   color: var(--color-muted);
   font-size: 0.8rem;
   line-height: 1.9;
@@ -210,29 +295,22 @@
 /* ========================================
    ENLACES
 ======================================== */
-
 .text-link {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-
   width: fit-content;
   max-width: 100%;
   margin-top: 12px;
   padding-bottom: 7px;
-
   border-bottom: 1px solid rgba(100, 197, 235, 0.5);
-
   color: white;
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 1px;
   line-height: 1.6;
   text-decoration: none;
-
-  transition:
-    color 0.25s ease,
-    border-color 0.25s ease;
+  transition: color 0.25s ease, border-color 0.25s ease;
 }
 
 .text-link svg {
@@ -257,7 +335,6 @@
 /* ========================================
    TABLETS Y MÓVILES
 ======================================== */
-
 @media (max-width: 760px) {
   .news-grid {
     grid-template-columns: minmax(0, 1fr);
@@ -276,7 +353,6 @@
 /* ========================================
    MÓVILES PEQUEÑOS
 ======================================== */
-
 @media (max-width: 380px) {
   .news-artwork {
     min-height: 210px;
@@ -306,7 +382,6 @@
 /* ========================================
    ACCESIBILIDAD
 ======================================== */
-
 @media (prefers-reduced-motion: reduce) {
   .artwork-circle-two {
     animation: none;
@@ -314,6 +389,11 @@
 
   .text-link,
   .text-link svg {
+    transition: none;
+  }
+
+  .news-video-thumbnail,
+  .news-video-play {
     transition: none;
   }
 }

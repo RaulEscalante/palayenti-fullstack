@@ -54,6 +54,28 @@
   filter: brightness(1.15);
 }
 
+/* IMÁGENES DE LOS UNIVERSOS */
+
+.universe-card-image {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  opacity: 0.75;
+
+  transition: transform 0.7s ease, opacity 0.5s ease;
+}
+
+.universe-card:hover .universe-card-image {
+  transform: scale(1.06);
+  opacity: 0.9;
+}
+
 .music-card .universe-card-bg {
   background:
     radial-gradient(ellipse at 85% 20%, rgba(23, 105, 170, 0.7), transparent 50%),
@@ -68,9 +90,17 @@
 
 .universe-card-bg::after {
   position: absolute;
+  z-index: 1;
   content: '';
   inset: 0;
-  background: linear-gradient(to top, rgba(7, 13, 19, 0.98), transparent 90%);
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(7, 13, 19, 0.98) 0%,
+      rgba(7, 13, 19, 0.65) 45%,
+      rgba(7, 13, 19, 0.15) 100%
+    );
 }
 
 /* UNIVERSO MUSICAL */
@@ -305,11 +335,10 @@
 }
 
 /* ACCESIBILIDAD */
-
 @media (prefers-reduced-motion: reduce) {
-
   .universe-card,
   .universe-card-bg,
+  .universe-card-image,
   .universe-watermark,
   .card-link svg {
     transition: none;

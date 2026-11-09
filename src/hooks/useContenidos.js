@@ -1,5 +1,6 @@
+
 import { useCallback, useEffect, useState } from 'react';
-import { obtenerContenidos } from '../../../services/contenidoService.js';
+import { obtenerContenidos } from '../services/contenidoService.js';
 
 export default function useContenidos() {
   const [contenidos, setContenidos] = useState([]);
@@ -8,24 +9,26 @@ export default function useContenidos() {
   const [intento, setIntento] = useState(0);
 
   useEffect(() => {
-    const controller = new AbortController();
+    let activo = true;
 
     async function cargarContenidos() {
       setCargando(true);
       setError(null);
 
       try {
-        const datos = await obtenerContenidos({
-          signal: controller.signal,
-        });
+        const datos = await obtenerContenidos();
 
-        setContenidos(datos);
+        if (activo) {
+          setContenidos(datos);
+        }
       } catch (err) {
-        if (err.name !== 'AbortError') {
-          setError(err.message || 'No se pudieron cargar los contenidos.');
+        if (activo) {
+          setError(
+            err.message || 'No se pudieron cargar los contenidos.'
+          );
         }
       } finally {
-        if (!controller.signal.aborted) {
+        if (activo) {
           setCargando(false);
         }
       }
@@ -34,7 +37,7 @@ export default function useContenidos() {
     cargarContenidos();
 
     return () => {
-      controller.abort();
+      activo = false;
     };
   }, [intento]);
 

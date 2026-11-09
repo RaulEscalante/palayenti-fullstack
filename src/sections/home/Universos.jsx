@@ -18,6 +18,7 @@ export default function Universos() {
       <Reveal delay={180} className="universe-grid">
         <Link to="/musica" className="universe-card music-card">
           <div className="universe-card-bg">
+            <img src="/universo-musica.jpg" alt="" className="universe-card-image" />
             <div className="music-equalizer">
               {[30, 55, 80, 45, 100, 65, 38, 72, 48, 88, 35].map(
                 (height, index) => (
@@ -55,6 +56,7 @@ export default function Universos() {
 
         <Link to="/creador" className="universe-card creator-card">
           <div className="universe-card-bg">
+            <img src="/universo-creador.jpg" alt="" className="universe-card-image" />
             <div className="creator-shape creator-shape-one" />
             <div className="creator-shape creator-shape-two" />
             <Video className="universe-watermark" strokeWidth={0.8} />

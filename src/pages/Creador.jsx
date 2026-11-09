@@ -3,7 +3,7 @@ import CreadorHero from '../sections/creador/CreadorHero.jsx';
 import NovedadesCreador from '../sections/creador/NovedadesCreador.jsx';
 import BibliotecaCreador from '../sections/creador/BibliotecaCreador.jsx';
 import CTAFinal from '../sections/cta/CTAFinal.jsx';
-import useContenidos from '../sections/creador/hooks/useContenidos.js';
+import useContenidos from '../hooks/useContenidos.js';
 
 export default function Creador() {
   const {
