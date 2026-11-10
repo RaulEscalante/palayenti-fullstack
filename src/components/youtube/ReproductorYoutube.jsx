@@ -1,5 +1,6 @@
 
 import { X } from 'lucide-react';
+import './ReproductorYoutube.css';
 
 export default function ReproductorYoutube({
   videoId,

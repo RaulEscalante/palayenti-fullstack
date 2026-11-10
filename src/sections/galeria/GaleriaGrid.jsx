@@ -1,87 +1,39 @@
 
-import { useState } from 'react';
-import { Music2, Clapperboard, Camera, Mic2, Headphones, Sparkles, } from 'lucide-react';
+import { useState, useMemo } from 'react';
+import { ArrowUpRight, CalendarDays, MapPin } from 'lucide-react';
 import Reveal from '../../components/reveal/Reveal.jsx';
+import EventoModal from './components/EventoModal.jsx';
+import eventos from './data/eventos.js';
 import './css/GaleriaGrid.css';
 
 const filtros = [
-  { label: 'Todo', value: 'todos' },
-  { label: 'Música', value: 'musica' },
-  { label: 'Detrás de cámaras', value: 'detras' },
-  { label: 'Experiencias', value: 'experiencias' },
+  { label: 'Todos', value: 'todos' },
+  { label: 'Música', value: 'Música' },
+  { label: 'Detrás de cámaras', value: 'Detrás de cámaras' },
+  { label: 'Experiencias', value: 'Experiencias' },
 ];
-
-const elementos = [
-  {
-    id: 1,
-    categoria: 'musica',
-    categoriaTexto: 'MÚSICA',
-    titulo: 'Sobre el escenario',
-    descripcion: 'La energía de compartir música en vivo.',
-    icono: Music2,
-    estilo: 'gallery-item-stage',
-    numero: '01',
-  },
-  {
-    id: 2,
-    categoria: 'detras',
-    categoriaTexto: 'DETRÁS DE CÁMARAS',
-    titulo: 'El proceso creativo',
-    descripcion: 'Ideas que toman forma antes de ver la luz.',
-    icono: Clapperboard,
-    estilo: 'gallery-item-studio',
-    numero: '02',
-  },
-  {
-    id: 3,
-    categoria: 'experiencias',
-    categoriaTexto: 'EXPERIENCIAS',
-    titulo: 'Momentos que inspiran',
-    descripcion: 'Experiencias que dejan huella en el camino.',
-    icono: Camera,
-    estilo: 'gallery-item-life',
-    numero: '03',
-  },
-  {
-    id: 4,
-    categoria: 'musica',
-    categoriaTexto: 'MÚSICA',
-    titulo: 'Entre canciones',
-    descripcion: 'La música desde otra perspectiva.',
-    icono: Mic2,
-    estilo: 'gallery-item-songs',
-    numero: '04',
-  },
-  {
-    id: 5,
-    categoria: 'detras',
-    categoriaTexto: 'DETRÁS DE CÁMARAS',
-    titulo: 'Detrás de cada toma',
-    descripcion: 'El trabajo y los detalles detrás del contenido.',
-    icono: Headphones,
-    estilo: 'gallery-item-making',
-    numero: '05',
-  },
-  {
-    id: 6,
-    categoria: 'experiencias',
-    categoriaTexto: 'EXPERIENCIAS',
-    titulo: 'Nuevas perspectivas',
-    descripcion: 'Historias, lugares y aprendizajes por descubrir.',
-    icono: Sparkles,
-    estilo: 'gallery-item-perspectives',
-    numero: '06',
-  },
-];
-
 
 export default function GaleriaGrid() {
   const [filtroActivo, setFiltroActivo] = useState('todos');
+  const [eventoActivo, setEventoActivo] = useState(null);
 
-  const elementosFiltrados =
-    filtroActivo === 'todos'
-      ? elementos
-      : elementos.filter((elemento) => elemento.categoria === filtroActivo);
+  const eventosFiltrados = useMemo(() => {
+    const resultado = filtroActivo === 'todos'
+      ? eventos
+      : eventos.filter((evento) => evento.categoria === filtroActivo);
+
+    return [...resultado].sort(
+      (a, b) => new Date(b.fecha) - new Date(a.fecha)
+    );
+  }, [filtroActivo]);
+
+  const formatearFecha = (fecha) => {
+    return new Date(`${fecha}T12:00:00`).toLocaleDateString('es-PE', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    });
+  };
 
   return (
     <section className="gallery-collection" id="galeria-grid">
@@ -92,28 +44,30 @@ export default function GaleriaGrid() {
           </Reveal>
 
           <Reveal as="h2" direction="left" delay={100}>
-            Cada imagen,
+            Momentos que
             <br />
-            <span>una historia.</span>
+            <span>forman parte de la historia.</span>
           </Reveal>
         </div>
 
         <Reveal direction="right" delay={150}>
           <p>
-            Explora diferentes facetas del universo PALAYENTI.
-            Cada categoría representa una parte del camino.
+            Cada evento tiene una historia que contar.
+            Explora nuestros encuentros, experiencias
+            y momentos detrás de cámaras.
           </p>
         </Reveal>
       </div>
 
       <Reveal direction="up" delay={200}>
-        <div className="gallery-filters" aria-label="Filtrar galería">
+        <div className="gallery-filters" aria-label="Filtrar eventos">
           {filtros.map((filtro) => (
             <button
               key={filtro.value}
               type="button"
-              className={`gallery-filter ${filtroActivo === filtro.value ? 'is-active' : ''
-                }`}
+              className={`gallery-filter ${
+                filtroActivo === filtro.value ? 'is-active' : ''
+              }`}
               onClick={() => setFiltroActivo(filtro.value)}
               aria-pressed={filtroActivo === filtro.value}
             >
@@ -123,52 +77,77 @@ export default function GaleriaGrid() {
         </div>
       </Reveal>
 
-      <div className="gallery-collection-grid" aria-live="polite">
-        {elementosFiltrados.map((elemento, index) => {
-          const Icono = elemento.icono;
-
-          return (
+      {eventosFiltrados.length > 0 ? (
+        <div className="gallery-events-grid" aria-live="polite">
+          {eventosFiltrados.map((evento, index) => (
             <Reveal
-              key={`${filtroActivo}-${elemento.id}`}
+              key={evento.id}
               direction="up"
-              delay={index * 100}
-              className="gallery-card-reveal"
+              delay={(index % 2) * 100}
+              className="gallery-event-reveal"
             >
-              <article className="gallery-collection-card">
-                <div className={`gallery-collection-art ${elemento.estilo}`}>
-                  <span className="gallery-collection-number">
-                    {elemento.numero}
+              <button
+                type="button"
+                className="gallery-event-card"
+                onClick={() => setEventoActivo(evento)}
+                aria-label={`Ver fotografías de ${evento.titulo}`}
+              >
+                <div className="gallery-event-image">
+                  <img
+                    src={evento.portada}
+                    alt={`Fotografía de ${evento.titulo}`}
+                    loading="lazy"
+                  />
+
+                  <span className="gallery-event-category">
+                    {evento.categoria}
                   </span>
 
-                  <div className="gallery-collection-symbol">
-                    <Icono size={35} strokeWidth={1.3} />
-                  </div>
+                  <span className="gallery-event-open">
+                    <ArrowUpRight size={23} />
+                  </span>
 
-                  <span className="gallery-collection-brand">
-                    PALAYENTI
+                  <span className="gallery-event-photo-count">
+                    {evento.fotografias.length} FOTOS
                   </span>
                 </div>
 
-                <div className="gallery-collection-info">
-                  <span className="gallery-collection-category">
-                    {elemento.categoriaTexto}
+                <div className="gallery-event-info">
+                  <span className="gallery-event-date">
+                    <CalendarDays size={14} />
+                    {formatearFecha(evento.fecha)}
                   </span>
 
-                  <h3>{elemento.titulo}</h3>
-                  <p>{elemento.descripcion}</p>
+                  <h3>{evento.titulo}</h3>
+
+                  <p>{evento.descripcion}</p>
+
+                  <span className="gallery-event-location">
+                    <MapPin size={14} />
+                    {evento.ubicacion}
+                  </span>
                 </div>
-              </article>
+              </button>
             </Reveal>
-          );
-        })}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <p className="gallery-empty">
+          No hay eventos disponibles en esta categoría.
+        </p>
+      )}
 
       <Reveal direction="up" delay={200}>
         <p className="gallery-collection-note">
           <span />
-          GALERÍA EN CONSTRUCCIÓN · NUEVOS MOMENTOS PRÓXIMAMENTE
+          PALAYENTI · MÚSICA, HISTORIAS Y EXPERIENCIAS
         </p>
       </Reveal>
+
+      <EventoModal
+        evento={eventoActivo}
+        onCerrar={() => setEventoActivo(null)}
+      />
     </section>
   );
 }

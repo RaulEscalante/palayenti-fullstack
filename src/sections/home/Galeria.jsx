@@ -1,10 +1,22 @@
 
-import { ArrowDownRight, Camera, Music2, Video } from 'lucide-react';
+import { ArrowDownRight, Camera, Music2, Sparkles } from 'lucide-react';
 import SectionHeading from './SectionHeading.jsx';
 import Reveal from '../../components/reveal/Reveal.jsx';
+import eventos from '../galeria/data/eventos.js';
+import { Link } from 'react-router-dom';
 import './css/Galeria.css';
 
+const iconosPorCategoria = {
+  'Música': Music2,
+  'Detrás de cámaras': Camera,
+  'Experiencias': Sparkles,
+};
+
 export default function Galeria() {
+  const eventosDestacados = [...eventos]
+    .sort((a, b) => new Date(b.fecha) - new Date(a.fecha))
+    .slice(0, 3);
+
   return (
     <section className="section gallery-section" id="galeria">
 
@@ -12,36 +24,53 @@ export default function Galeria() {
         eyebrow="MOMENTOS QUE QUEDAN"
         title="DENTRO Y FUERA"
         highlight="DEL ESCENARIO."
-        description="Un vistazo a los escenarios, las colaboraciones y las experiencias que forman parte del universo PALAYENTI."
+        description="Un vistazo a los eventos, las colaboraciones y las experiencias que forman parte del universo PALAYENTI."
       />
 
       <div className="gallery-grid">
-        <Reveal className="gallery-tile gallery-tile-large" direction="up">
-          <img src="/img-escenario.webp" alt="PALAYENTI en el escenario"
-            className="gallery-image" />
-          <Music2 size={40} strokeWidth={1} />
-          <span>01 / EN EL ESCENARIO</span>
-        </Reveal>
+        {eventosDestacados.map((evento, index) => {
+          const Icono = iconosPorCategoria[evento.categoria] || Camera;
 
-        <Reveal className="gallery-tile gallery-tile-blue" direction="up" delay={120}>
-          <img src="/galeria/detras-camaras.jpg" alt="Momentos detrás de cámaras"
-            className="gallery-image" />
-          <Camera size={34} strokeWidth={1} />
-          <span>02 / DETRÁS DE CÁMARAS</span>
-        </Reveal>
+          const variantes = [
+            'gallery-tile-large',
+            'gallery-tile-blue',
+            'gallery-tile-light',
+          ];
 
-        <Reveal className="gallery-tile gallery-tile-light" direction="up" delay={240}>
-          <img src="/galeria/sesiones-videos.jpg" alt="Sesiones y videos musicales"
-            className="gallery-image" />
-          <Video size={34} strokeWidth={1} />
-          <span>03 / SESIONES Y VIDEOS</span>
-        </Reveal>
+          return (
+            <Reveal
+              key={evento.id}
+              className={`gallery-tile ${variantes[index]}`}
+              direction="up"
+              delay={index * 120}
+            >
+              <img
+                src={evento.portada}
+                alt={`Portada de ${evento.titulo}`}
+                className="gallery-image"
+                loading="lazy"
+              />
+
+              <Icono size={40} strokeWidth={1} />
+
+              <span>
+                {String(index + 1).padStart(2, '0')}
+                {' / '}
+                {evento.categoria?.toUpperCase() || evento.titulo.toUpperCase()}
+              </span>
+            </Reveal>
+          );
+        })}
       </div>
 
       <Reveal className="gallery-footer" delay={150}>
-        <span>GALERÍA VISUAL · CONTENIDO PROVISIONAL</span>
-        <ArrowDownRight size={20} />
+        <span>EVENTOS DESTACADOS · PALAYENTI</span>
+        <Link to="/galeria" aria-label="Ver toda la galería">
+          VER TODA LA GALERÍA
+          <ArrowDownRight size={20} />
+        </Link>
       </Reveal>
+
     </section>
   );
 }

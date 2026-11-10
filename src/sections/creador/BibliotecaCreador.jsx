@@ -1,7 +1,7 @@
 
 import { useMemo, useState } from 'react';
 import { ArrowUpRight, Play } from 'lucide-react';
-import ReproductorYoutube from './components/ReproductorYoutube.jsx';
+import ReproductorYoutube from '../../components/youtube/ReproductorYoutube.jsx';
 import Reveal from '../../components/reveal/Reveal.jsx';
 import './css/BibliotecaCreador.css';
 
@@ -15,23 +15,32 @@ export default function BibliotecaCreador({
   const [mostrarTodos, setMostrarTodos] = useState(false);
   const [videoActivo, setVideoActivo] = useState(null);
 
+  // Solo entrevistas para la biblioteca de Creador
+  const entrevistas = useMemo(
+    () => contenidos.filter(
+      (contenido) => contenido.categoria === 'ENTREVISTAS'
+    ),
+    [contenidos]
+  );
+
   const categorias = useMemo(() => {
     const disponibles = [
-      ...new Set(contenidos.map((contenido) => contenido.categoria)),
+      ...new Set(entrevistas.map((contenido) => contenido.categoria)),
     ];
 
+
     return ['TODOS', ...disponibles];
-  }, [contenidos]);
+  }, [entrevistas]);
 
   const contenidosFiltrados = useMemo(() => {
     if (categoriaActiva === 'TODOS') {
-      return contenidos;
+      return entrevistas;
     }
 
-    return contenidos.filter(
+    return entrevistas.filter(
       (contenido) => contenido.categoria === categoriaActiva
     );
-  }, [contenidos, categoriaActiva]);
+  }, [entrevistas, categoriaActiva]);
 
   const contenidosVisibles = mostrarTodos
     ? contenidosFiltrados

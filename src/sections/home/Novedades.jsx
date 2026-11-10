@@ -2,14 +2,14 @@
 import { ArrowUpRight, Headphones, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import ReproductorYoutube from '../creador/components/ReproductorYoutube.jsx';
+import ReproductorYoutube from '../../components/youtube/ReproductorYoutube.jsx';
 import SectionHeading from './SectionHeading.jsx';
 import Reveal from '../../components/reveal/Reveal.jsx';
 import useContenidos from '../../hooks/useContenidos.js';
 import './css/Novedades.css';
 
 export default function Novedades() {
-  const { contenidos, cargando, error, recargar, } = useContenidos();
+  const { contenidos, cargando, error, } = useContenidos();
   // Última entrevista para la tarjeta Creador
   const ultimaEntrevista = contenidos.find(
     (contenido) => contenido.categoria === 'ENTREVISTAS'

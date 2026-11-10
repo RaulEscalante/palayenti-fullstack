@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Play, RefreshCw, ArrowUpRight } from 'lucide-react';
 import { obtenerUltimosPorCategoria } from '../../services/contenidoService.js';
-import ReproductorYoutube from './components/ReproductorYoutube.jsx';
+import ReproductorYoutube from '../../components/youtube/ReproductorYoutube.jsx';
 import Reveal from '../../components/reveal/Reveal.jsx';
 import './css/NovedadesCreador.css';
 
@@ -14,7 +14,11 @@ export default function NovedadesCreador({
 }) {
   const [videoActivo, setVideoActivo] = useState(null);
 
-  const novedades = obtenerUltimosPorCategoria(contenidos);
+  const novedades = obtenerUltimosPorCategoria(
+    contenidos.filter(
+      (contenido) => contenido.categoria === 'ENTREVISTAS'
+    )
+  );
 
   return (
     <section className="novedades-creador-section" id="novedades">

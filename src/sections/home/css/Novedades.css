@@ -209,41 +209,11 @@
   border: 0;
 }
 
-.news-video-player .reproductor-youtube-cerrar {
-  position: absolute;
-  z-index: 3;
-  top: 12px;
-  right: 12px;
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 50%;
-  color: white;
-  background: rgba(16, 24, 32, 0.9);
-  cursor: pointer;
-  transition: background 0.25s ease, transform 0.25s ease;
-}
-
-.news-video-player .reproductor-youtube-cerrar:hover {
-  background: #1769AA;
-  transform: scale(1.08);
-}
-
-.news-video-player .reproductor-youtube-cerrar:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
-}
-
 /* ========================================
    ETIQUETAS DE PORTADA
 ======================================== */
-.artwork-label,
-.artwork-caption {
+.artwork-label, .artwork-caption {
   position: absolute;
-
   color: #CFDCE5;
   font-size: 0.55rem;
   font-weight: 600;

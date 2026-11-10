@@ -1,0 +1,133 @@
+
+.evento-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 70px 100px;
+  background: rgba(5, 9, 14, 0.97);
+  animation: lightbox-in 0.2s ease;
+}
+
+.evento-lightbox-image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  user-select: none;
+  animation: lightbox-image-in 0.25s ease;
+}
+
+.evento-lightbox-close,
+.evento-lightbox-arrow {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.evento-lightbox-close:hover,
+.evento-lightbox-arrow:hover {
+  background: #1769AA;
+}
+
+.evento-lightbox-close {
+  top: 25px;
+  right: 30px;
+  width: 46px;
+  height: 46px;
+}
+
+.evento-lightbox-close:hover {
+  transform: rotate(90deg);
+}
+
+.evento-lightbox-arrow {
+  top: 50%;
+  width: 52px;
+  height: 52px;
+  transform: translateY(-50%);
+}
+
+.evento-lightbox-arrow:hover {
+  transform: translateY(-50%) scale(1.08);
+}
+
+.evento-lightbox-prev {
+  left: 28px;
+}
+
+.evento-lightbox-next {
+  right: 28px;
+}
+
+.evento-lightbox-counter {
+  position: absolute;
+  top: 38px;
+  left: 35px;
+  color: #FFFFFF;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+}
+
+@keyframes lightbox-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes lightbox-image-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 600px) {
+  .evento-lightbox {
+    padding: 65px 12px;
+  }
+
+  .evento-lightbox-close {
+    top: 15px;
+    right: 15px;
+  }
+
+  .evento-lightbox-counter {
+    top: 30px;
+    left: 18px;
+  }
+
+  .evento-lightbox-arrow {
+    top: auto;
+    bottom: 18px;
+    width: 46px;
+    height: 46px;
+    transform: none;
+  }
+
+  .evento-lightbox-arrow:hover {
+    transform: scale(1.08);
+  }
+
+  .evento-lightbox-prev {
+    left: calc(50% - 58px);
+  }
+
+  .evento-lightbox-next {
+    right: calc(50% - 58px);
+  }
+}

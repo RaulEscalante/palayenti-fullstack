@@ -85,22 +85,30 @@
 }
 /* Elemento decorativo */
 
+
 .gallery-tile::after {
   position: absolute;
   z-index: -1;
   content: '';
-
   top: -55px;
   right: -55px;
-
   width: 170px;
   height: 170px;
-
   border: 1px solid rgba(100, 197, 235, 0.4);
   border-radius: 50%;
 
-  transition: transform 0.4s ease;
+  /* Segundo aro concéntrico */
+  box-shadow:
+    0 0 0 18px transparent,
+    0 0 0 8px rgba(100, 197, 235, 0.18);
+
+  transition: transform 0.5s ease;
 }
+
+.gallery-tile:hover::after {
+  transform: scale(1.12) rotate(12deg);
+}
+
 
 .gallery-tile > svg,
 .gallery-tile > span {

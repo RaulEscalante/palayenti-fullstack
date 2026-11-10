@@ -1,0 +1,200 @@
+
+.evento-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  background: rgba(7, 13, 19, 0.88);
+  backdrop-filter: blur(8px);
+  animation: evento-overlay-in 0.25s ease;
+}
+
+.evento-modal {
+  position: relative;
+  width: min(1100px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 38px;
+  border-radius: 12px;
+  background: #FFFFFF;
+  color: #101820;
+  animation: evento-modal-in 0.3s ease;
+}
+
+.evento-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.evento-modal-heading h2 {
+  margin: 12px 0;
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  line-height: 1.1;
+}
+
+.evento-modal-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  color: #687782;
+  font-size: 0.85rem;
+}
+
+.evento-modal-details span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.evento-modal-close {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  color: #FFFFFF;
+  background: #101820;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.evento-modal-close:hover {
+  background: #1769AA;
+  transform: rotate(90deg);
+}
+
+.evento-modal-description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin: 26px 0;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #E5E9ED;
+}
+
+.evento-modal-description p {
+  margin: 0;
+  color: #687782;
+  font-size: 0.95rem;
+}
+
+.evento-modal-description > span {
+  flex-shrink: 0;
+  color: #1769AA;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.evento-modal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.evento-modal-photo-reveal {
+  min-width: 0;
+}
+
+.evento-modal-photo {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 5px;
+  background: #E8EDF1;
+  cursor: pointer;
+}
+
+.evento-modal-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.evento-modal-photo:hover img {
+  transform: scale(1.06);
+}
+
+.evento-modal-photo-number {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 5px 9px;
+  border-radius: 3px;
+  color: #FFFFFF;
+  background: rgba(16, 24, 32, 0.75);
+  font-size: 0.7rem;
+}
+
+.evento-modal-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 30px;
+  padding-top: 18px;
+  border-top: 1px solid #E5E9ED;
+  color: #84919A;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+}
+
+@keyframes evento-overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes evento-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 700px) {
+  .evento-modal-overlay {
+    padding: 10px;
+  }
+
+  .evento-modal {
+    max-height: 94vh;
+    padding: 22px 16px;
+  }
+
+  .evento-modal-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .evento-modal-description {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .evento-modal-footer {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 380px) {
+  .evento-modal-grid {
+    grid-template-columns: 1fr;
+  }
+}
