@@ -1,0 +1,19 @@
+
+# Dependencias
+node_modules/
+
+# Variables de entorno y credenciales
+.env
+.env.*
+!.env.example
+
+# Archivos generados por Prisma
+/src/generated/prisma
+
+# Registros
+npm-debug.log*
+*.log
+
+# Archivos temporales
+.DS_Store
+Thumbs.db
