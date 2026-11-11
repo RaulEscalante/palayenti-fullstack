@@ -96,6 +96,17 @@
   transform: scale(0.99);
 }
 
+.admin-login__error {
+  margin: 0 0 16px;
+  color: #c62828;
+  font-size: 13px;
+}
+
+.admin-login form button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
 @media (max-width: 480px) {
   .admin-login__card {
     padding: 36px 25px;
